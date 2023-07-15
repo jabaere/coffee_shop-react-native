@@ -8,6 +8,7 @@ import { Home } from "./screens/Home";
 import { Login } from "./screens/Login";
 import { SignUp } from "./screens/SignUp";
 import { Forgotpassword } from "./screens/Forgotpassword";
+import { Verification } from "./screens/Verification";
 import {
   useFonts,
   Poppins_500Medium,
@@ -88,6 +89,20 @@ export default function App() {
             headerShown={false}
             options={{
               title: "Forgot password",
+              headerStyle: {
+                borderBottomWidth: 0, // Remove the bottom border
+              },
+              headerTitleStyle: {
+                display: "none", // Hide the header title
+              },
+            }}
+          />
+          <Stack.Screen
+            name="Verification"
+            component={Verification}
+            headerShown={false}
+            options={{
+              title: "Verification",
               headerStyle: {
                 borderBottomWidth: 0, // Remove the bottom border
               },

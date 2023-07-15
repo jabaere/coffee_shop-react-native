@@ -17,7 +17,7 @@ import { SubmitButton } from "../components/SubmitButton";
 import MessageIcon from "../assets/svg/MessageIcon.svg";
 import { isValidEmail } from "../utils/globalFuntions";
 import { useNavigation } from "@react-navigation/native";
-export function Forgotpassword() {
+export function Verification() {
   const navigation = useNavigation();
   //form state
   const [formData, setFormData] = useState({
@@ -65,7 +65,7 @@ export function Forgotpassword() {
         setFormData({
           email: "",
         });
-        navigation.navigate("Verification");
+        navigation.navigate("Login");
       }, 2000); // Simulating a 2-second delay
     } else {
       console.log("Form validation failed.");
@@ -79,8 +79,8 @@ export function Forgotpassword() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <View style={styles.title_container}>
-            <Text style={styles.title}>Forgot Password?</Text>
-            <Text style={styles.subTitle}>Enter your email adress</Text>
+            <Text style={styles.title}>Verification</Text>
+            <Text style={styles.subTitle}>Enter the OTP code we sent you</Text>
           </View>
           <View style={styles.form_container}>
             <SafeAreaView
@@ -92,17 +92,14 @@ export function Forgotpassword() {
               }}
             >
               <View style={styles.input_container}>
-                <View style={styles.icon_container}>
-                  <MessageIcon style={styles.icon} />
+                <View style={styles.block_container}>
+                  <TextInput keyboardType="numeric" style={styles.input} />
+                  <TextInput keyboardType="numeric" style={styles.input} />
+                  <TextInput keyboardType="numeric" style={styles.input} />
+                  <TextInput keyboardType="numeric" style={styles.input} />
                 </View>
 
-                <TextInput
-                  style={styles.input}
-                  onChangeText={(value) => setFormData({ email: value })}
-                  value={formData.email}
-                  placeholder={errors.email ? errors.email : "Email adress"}
-                  placeholderTextColor={errors.email ? "red" : "#AAAAAA"}
-                />
+                <Text style={styles.forgot_password}>Resend in 00:30 </Text>
               </View>
               {/* Submit button */}
               <TouchableOpacity
@@ -141,34 +138,41 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   input_container: {
-    flexDirection: "row",
-    height: 40,
+    flexDirection: "column",
+    height: 200,
     marginLeft: 12,
     marginRight: 12,
     marginTop: 272,
     width: "80%",
-    borderBottomWidth: 2,
-    borderColor: "#AAAAAA",
+
     alignItems: "center",
+  },
+
+  block_container: {
+    height: 150, // Increase the height to accommodate the icon
+    width: "100%", // Increase the width to accommodate the icon
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
+    flex: 1,
+    marginTop: 90,
   },
   input: {
-    height: 40,
-    width: "80%",
-    borderWidth: 1,
-    padding: 10,
-    borderWidth: 0,
-
-    // color: "#C1C7D0",
-    fontSize: 12,
-    fontFamily: "Poppins_500Medium",
-  },
-  icon_container: {
-    borderRightWidth: 2,
-    borderRightColor: "#AAAAAA",
-    height: 30, // Increase the height to accommodate the icon
-    width: 40, // Increase the width to accommodate the icon
+    width: 48,
+    height: 61,
+    backgroundColor: "#F7F8FB",
+    borderRadius: 10,
+    textAlign: "center",
     alignItems: "center",
     justifyContent: "center",
+  },
+  forgot_password: {
+    textAlign: "center",
+
+    fontSize: 14,
+    fontFamily: "Poppins_500Medium",
+    color: "#AAAAAA",
+    marginTop: 30,
   },
   button_container: {
     width: "20%",
