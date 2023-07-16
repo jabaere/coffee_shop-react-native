@@ -11,48 +11,77 @@ import {
   Platform,
   TouchableWithoutFeedback,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Constants from "expo-constants";
 import { SubmitButton } from "../components/SubmitButton";
 import MessageIcon from "../assets/svg/MessageIcon.svg";
 import { isValidEmail } from "../utils/globalFuntions";
 import { useNavigation } from "@react-navigation/native";
+import { Countdown } from "../components/CountDown";
+
 export function Verification() {
+  // create reference for input number box
+  const inputRefs = useRef([]);
+  //
   const navigation = useNavigation();
+  // resend button state
+  const [resend, setResend] = useState(false);
   //form state
-  const [formData, setFormData] = useState({
-    email: "",
-  });
+  const form = {
+    first_box: "",
+    second_box: "",
+    third_box: "",
+    fourth_box: "",
+  };
+
+  const [formData, setFormData] = useState(form);
+  //reset countdown
+  useEffect(() => {
+    console.log("render");
+    if (resend) {
+      //create empty object
+      const resetFormData = {};
+      //loop form object
+      for (const key in form) {
+        resetFormData[key] = "";
+      }
+      //clear formData object values
+      setFormData(resetFormData);
+    }
+  }, [resend]);
+
+  //handle input changes
+  const handleInputChange = (field, value, index) => {
+    form[index] = value;
+    //focus next number box
+    if (value !== "" && index < inputRefs.current.length - 1) {
+      inputRefs.current[index + 1].focus();
+    }
+    setFormData({ ...formData, [field]: value });
+  };
   //error state
-  const [errors, setErrors] = useState({
-    email: "",
-  });
+  const [errors, setErrors] = useState(form);
 
   //validate form
   const validateForm = () => {
     let isValid = true;
-    const updatedErrors = {};
-
-    if (formData.email.trim() === "") {
-      updatedErrors.email = "Email is required";
-      isValid = false;
-    } else if (!isValidEmail(formData.email)) {
-      console.log("Invalid email address");
-      updatedErrors.email = "Invalid email address";
-
-      setFormData({
-        email: "",
-      });
-      isValid = false;
-    }
+    // check if every input box has a non-empty value/ return boolean -
+    const hasNonEmptyValue = Object.entries(formData).every(([key, value]) => {
+      return value !== "" && value !== null && value !== undefined;
+    });
+    // let isValid = true;
+    // const updatedErrors = {};
 
     console.log("isvalid: ", isValid);
-    setErrors(updatedErrors);
-    return isValid;
+    // setErrors(updatedErrors);
+    return hasNonEmptyValue;
   };
+
+  //
 
   //submit form
   const handleSubmit = () => {
+    //check if form is valid
     if (validateForm()) {
       console.log("Submitting form...");
 
@@ -62,15 +91,28 @@ export function Verification() {
         // Perform any additional logic or API requests here
 
         // Reset the form data after submission if needed
-        setFormData({
-          email: "",
-        });
+        // setFormData({
+        //   email: "",
+        // });
         navigation.navigate("Login");
       }, 2000); // Simulating a 2-second delay
     } else {
       console.log("Form validation failed.");
     }
   };
+
+  //handle ke press
+  const handleKeyPress = (event, index) => {
+    if (event.nativeEvent.key === "Backspace" && index > 0) {
+      // Focus on the previous input box
+      inputRefs.current[index - 1].focus();
+
+      // Clear the previous input value
+      form[index - 1] = "";
+      handleInputChange("", index - 1);
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -93,13 +135,30 @@ export function Verification() {
             >
               <View style={styles.input_container}>
                 <View style={styles.block_container}>
-                  <TextInput keyboardType="numeric" style={styles.input} />
-                  <TextInput keyboardType="numeric" style={styles.input} />
-                  <TextInput keyboardType="numeric" style={styles.input} />
-                  <TextInput keyboardType="numeric" style={styles.input} />
+                  {Object.entries(form)?.map(
+                    ([name, value], index, arr) => (
+                      console.log(name),
+                      (
+                        <TextInput
+                          ref={(ref) => (inputRefs.current[index] = ref)}
+                          maxLength={1}
+                          keyboardType="numeric"
+                          style={styles.input}
+                          key={index}
+                          onChangeText={(inputValue) =>
+                            handleInputChange(name, inputValue, index)
+                          }
+                          value={formData[name]}
+                          onKeyPress={(event) => handleKeyPress(event, index)}
+                        />
+                      )
+                    )
+                  )}
                 </View>
 
-                <Text style={styles.forgot_password}>Resend in 00:30 </Text>
+                <View style={styles.forgot_password}>
+                  <Countdown seconds={30} setResend={setResend} />
+                </View>
               </View>
               {/* Submit button */}
               <TouchableOpacity
