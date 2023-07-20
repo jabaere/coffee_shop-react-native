@@ -9,7 +9,7 @@ import {
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
 import { useNavigation } from "@react-navigation/native";
-export function Home() {
+export function GreetingScreen() {
   const navigation = useNavigation();
 
   //handle login button click

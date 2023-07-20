@@ -94,7 +94,7 @@ export function Verification() {
         // setFormData({
         //   email: "",
         // });
-        navigation.navigate("Login");
+        navigation.navigate("Home");
       }, 2000); // Simulating a 2-second delay
     } else {
       console.log("Form validation failed.");
@@ -135,25 +135,20 @@ export function Verification() {
             >
               <View style={styles.input_container}>
                 <View style={styles.block_container}>
-                  {Object.entries(form)?.map(
-                    ([name, value], index, arr) => (
-                      console.log(name),
-                      (
-                        <TextInput
-                          ref={(ref) => (inputRefs.current[index] = ref)}
-                          maxLength={1}
-                          keyboardType="numeric"
-                          style={styles.input}
-                          key={index}
-                          onChangeText={(inputValue) =>
-                            handleInputChange(name, inputValue, index)
-                          }
-                          value={formData[name]}
-                          onKeyPress={(event) => handleKeyPress(event, index)}
-                        />
-                      )
-                    )
-                  )}
+                  {Object.entries(form)?.map(([name, value], index, arr) => (
+                    <TextInput
+                      ref={(ref) => (inputRefs.current[index] = ref)}
+                      maxLength={1}
+                      keyboardType="numeric"
+                      style={styles.input}
+                      key={index}
+                      onChangeText={(inputValue) =>
+                        handleInputChange(name, inputValue, index)
+                      }
+                      value={formData[name]}
+                      onKeyPress={(event) => handleKeyPress(event, index)}
+                    />
+                  ))}
                 </View>
 
                 <View style={styles.forgot_password}>

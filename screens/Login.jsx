@@ -116,7 +116,7 @@ export const Login = () => {
           email: "",
           password: "",
         });
-        navigation.navigate("Login");
+        navigation.navigate("Home");
       }, 2000); // Simulating a 2-second delay
     } else {
       console.log("Form validation failed.");

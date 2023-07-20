@@ -12,3 +12,24 @@ export const handleInputChange = (field, value, setFormData) => {
     [field]: value,
   }));
 };
+
+//
+
+export const coffeeInfo = [
+  {
+    name: "Americano",
+    img: require("../assets/img/americano.png"),
+  },
+  {
+    name: "Cappuccino",
+    img: require("../assets/img/capuchino.png"),
+  },
+  {
+    name: "Mocha",
+    img: require("../assets/img/mocha.png"),
+  },
+  {
+    name: "Flat White",
+    img: require("../assets/img/flat.png"),
+  },
+];

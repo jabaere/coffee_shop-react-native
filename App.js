@@ -4,15 +4,18 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import Constants from "expo-constants";
 
-import { Home } from "./screens/Home";
+import { GreetingScreen } from "./screens/GreetingScreen";
 import { Login } from "./screens/Login";
 import { SignUp } from "./screens/SignUp";
 import { Forgotpassword } from "./screens/Forgotpassword";
 import { Verification } from "./screens/Verification";
+import { HomePage } from "./screens/HomePage";
+import BottomTabNavigator from "./screens/bottom_navigation/BottomTab";
 import {
   useFonts,
   Poppins_500Medium,
   Poppins_700Bold,
+  DMSans_500Medium,
 } from "@expo-google-fonts/poppins";
 
 const Stack = createStackNavigator();
@@ -29,10 +32,10 @@ export default function App() {
     <>
       <StatusBar style="light" backgroundColor={"transparent"} translucent />
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="HomePage">
+        <Stack.Navigator initialRouteName="GreetingScreen">
           <Stack.Screen
-            name="HomePage"
-            component={Home}
+            name="GreetingScreen"
+            component={GreetingScreen}
             headerShown={false}
             options={{
               title: "",
@@ -103,6 +106,20 @@ export default function App() {
             headerShown={false}
             options={{
               title: "Verification",
+              headerStyle: {
+                borderBottomWidth: 0, // Remove the bottom border
+              },
+              headerTitleStyle: {
+                display: "none", // Hide the header title
+              },
+            }}
+          />
+          <Stack.Screen
+            name="Home"
+            component={BottomTabNavigator}
+            options={{
+              title: "Home",
+              headerShown: false,
               headerStyle: {
                 borderBottomWidth: 0, // Remove the bottom border
               },
