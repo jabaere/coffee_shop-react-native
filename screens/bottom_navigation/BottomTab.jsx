@@ -26,6 +26,7 @@ const BottomTabNavigator = () => {
         ),
         tabBarStyle: styles.tabBarContainer,
       })}
+      initialRouteName="HomePage"
     >
       <Tab.Screen
         name="HomePage"
@@ -63,7 +64,8 @@ const BottomTabNavigator = () => {
           headerTitleStyle: {
             display: "none", // Hide the header title
           },
-          headerShown: true,
+          headerLeft: null,
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -84,6 +86,8 @@ const BottomTabNavigator = () => {
           //   },
           //   tabBarLabel: "Orders",
           //   headerTitle: "Orders",
+          headerLeft: null,
+          headerShown: false,
         }}
       />
     </Tab.Navigator>

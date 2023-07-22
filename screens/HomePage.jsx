@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React, { useState, useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 import CoffeeCard from "../components/CoffeeCard";
 import { coffeeInfo } from "../utils/globalFuntions";
 import { AntDesign } from "@expo/vector-icons";
 import Glass from "../assets/svg/Glass.svg";
 import GlassFill from "../assets/svg/GlassFill.svg";
 export function HomePage() {
+  const navigation = useNavigation();
   //detect period
 
   function getDayPeriod(currentHour) {
@@ -81,7 +83,16 @@ export function HomePage() {
 
           <View style={styles.cardContainer}>
             {coffeeInfo?.map((coffee, index) => (
-              <TouchableOpacity key={index}>
+              <TouchableOpacity
+                key={index}
+                onPress={() =>
+                  navigation.navigate("Details", {
+                    name: coffee.name,
+                    img: coffee.img,
+                    price: coffee.price,
+                  })
+                }
+              >
                 <CoffeeCard name={coffee.name} img={coffee.img} />
               </TouchableOpacity>
             ))}

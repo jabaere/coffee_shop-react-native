@@ -11,19 +11,21 @@ import { Forgotpassword } from "./screens/Forgotpassword";
 import { Verification } from "./screens/Verification";
 import { HomePage } from "./screens/HomePage";
 import BottomTabNavigator from "./screens/bottom_navigation/BottomTab";
+import { Details } from "./screens/Details";
+import { AntDesign } from "@expo/vector-icons";
 import {
   useFonts,
   Poppins_500Medium,
   Poppins_700Bold,
-  DMSans_500Medium,
 } from "@expo-google-fonts/poppins";
-
+import { DMSans_500Medium } from "@expo-google-fonts/dm-sans";
 const Stack = createStackNavigator();
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     Poppins_500Medium,
     Poppins_700Bold,
+    DMSans_500Medium,
   });
   if (!fontsLoaded) {
     return null;
@@ -126,6 +128,29 @@ export default function App() {
               headerTitleStyle: {
                 display: "none", // Hide the header title
               },
+            }}
+          />
+          <Stack.Screen
+            name="Details"
+            component={Details}
+            options={{
+              title: "Details",
+              headerStyle: {},
+              headerTitleContainerStyle: {
+                justifyContent: "space-between", // Center the title and the headerRight component
+                flexDirection: "row", // Arrange the title and headerRight component horizontally
+                alignItems: "center", // Align items vertically in the container
+                width: "100%",
+              },
+              headerTitleStyle: {
+                textAlign: "center", // Center the header title
+                flex: 1, // This will make the header title expand to take the remaining space
+              },
+              headerRight: () => (
+                <View style={{ marginRight: 25 }}>
+                  <AntDesign name="shoppingcart" size={26} color="#001833" />
+                </View>
+              ),
             }}
           />
         </Stack.Navigator>

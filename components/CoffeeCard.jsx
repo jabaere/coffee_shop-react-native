@@ -1,15 +1,7 @@
 import { Text, View, StyleSheet, Image, ImageBackground } from "react-native";
 import React from "react";
-import { useFonts, DMSans_500Medium } from "@expo-google-fonts/dm-sans";
-//DM Sans
 
 export default function ({ img, name }) {
-  let [fontsLoaded] = useFonts({
-    DMSans_500Medium,
-  });
-  if (!fontsLoaded) {
-    return null;
-  }
   return (
     <View style={styles.container}>
       <Image source={img} style={{ width: 114, height: 85 }} />

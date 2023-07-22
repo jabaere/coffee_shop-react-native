@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet, Image, ImageBackground } from "react-native";
 //import { StatusBar } from 'expo-status-bar';
 import Constants from "expo-constants";
-import CoffeSvg from "../components/CoffeSvg";
+import CoffeSvg from "../components/svg/CoffeSvg";
 
 import {
   useFonts,
