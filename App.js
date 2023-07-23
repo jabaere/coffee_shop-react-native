@@ -10,6 +10,7 @@ import { SignUp } from "./screens/SignUp";
 import { Forgotpassword } from "./screens/Forgotpassword";
 import { Verification } from "./screens/Verification";
 import { HomePage } from "./screens/HomePage";
+import { Cart } from "./screens/Cart";
 import BottomTabNavigator from "./screens/bottom_navigation/BottomTab";
 import { Details } from "./screens/Details";
 import { AntDesign } from "@expo/vector-icons";
@@ -19,6 +20,8 @@ import {
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
 import { DMSans_500Medium } from "@expo-google-fonts/dm-sans";
+import { Provider } from "react-redux";
+import store from "./store/store";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -31,7 +34,7 @@ export default function App() {
     return null;
   }
   return (
-    <>
+    <Provider store={store}>
       <StatusBar style="light" backgroundColor={"transparent"} translucent />
       <NavigationContainer>
         <Stack.Navigator initialRouteName="GreetingScreen">
@@ -145,6 +148,7 @@ export default function App() {
               headerTitleStyle: {
                 textAlign: "center", // Center the header title
                 flex: 1, // This will make the header title expand to take the remaining space
+                fontFamily: "Poppins_500Medium",
               },
               headerRight: () => (
                 <View style={{ marginRight: 25 }}>
@@ -153,9 +157,17 @@ export default function App() {
               ),
             }}
           />
+          <Stack.Screen
+            name="Cart"
+            component={Cart}
+            options={{
+              title: "",
+              headerStyle: {},
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
-    </>
+    </Provider>
   );
 }
 

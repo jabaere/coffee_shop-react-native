@@ -19,25 +19,25 @@ export const coffeeInfo = [
   {
     name: "Americano",
     img: require("../assets/img/americano.png"),
-    price: "3$",
+    price: 3,
     id: 1,
   },
   {
     name: "Cappuccino",
     img: require("../assets/img/capuchino.png"),
-    price: "5$",
+    price: 5,
     id: 2,
   },
   {
     name: "Mocha",
     img: require("../assets/img/mocha.png"),
-    price: "3$",
+    price: 3,
     id: 3,
   },
   {
     name: "Flat White",
     img: require("../assets/img/flat.png"),
-    price: "2$",
+    price: 3,
     id: 4,
   },
 ];

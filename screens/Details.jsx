@@ -1,31 +1,52 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import HotCoffeeCup from "../components/svg/HotCoffeeCup";
 import ColdCoffeeCup from "../components/svg/ColdCoffeeCup";
 import SmallCup from "../components/svg/SmallCup";
 import MediumCup from "../components/svg/MediumCup";
 import BigCup from "../components/svg/BigCup";
 import BlueButton from "../components/BlueButton";
+import { useSelector, useDispatch } from "react-redux";
+import { addOrder } from "../store/orderSlice";
 export function Details({ route }) {
   const { name, img, price } = route.params;
-  const [order_number, setOrder_number] = useState(1);
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
   const [order_limit, setOrder_limit] = useState(34);
+  const [total_price, setTotal_price] = useState(price);
 
   const [coffee, setCoffee] = useState({
+    quantity: 1,
     shot: "SINGLE",
     type: "COLD",
     size: "MEDIUM",
     ice: "THREE",
+    name,
+    img,
+    price,
+    id: Date.now(),
   });
 
   const update_order = (operation) => {
     console.log(coffee);
     switch (operation) {
       case "INCREASE":
-        order_number <= order_limit && setOrder_number((prev) => prev + 1);
+        coffee.quantity <= order_limit &&
+          setCoffee((prevData) => ({
+            ...prevData,
+            quantity: prevData.quantity + 1,
+            price: +prevData.price + +price,
+          }));
         break;
       case "DECREASE":
-        order_number > 1 && setOrder_number((prev) => prev - 1);
+        coffee.quantity > 1 &&
+          coffee.quantity <= order_limit &&
+          setCoffee((prevData) => ({
+            ...prevData,
+            quantity: prevData.quantity - 1,
+            price: +prevData.price - price,
+          }));
         break;
       case "SINGLE":
         setCoffee((prevData) => ({
@@ -106,7 +127,7 @@ export function Details({ route }) {
             <Text style={styles.arr}> - </Text>
           </TouchableOpacity>
 
-          <Text style={styles.name}>{order_number}</Text>
+          <Text style={styles.name}>{coffee.quantity}</Text>
 
           <TouchableOpacity onPress={() => update_order("INCREASE")}>
             <Text style={styles.arr}> + </Text>
@@ -257,12 +278,17 @@ export function Details({ route }) {
           <Text style={styles.total_text}>Total amount</Text>
         </View>
         <View>
-          <Text style={styles.total_text}>$3.0</Text>
+          <Text style={styles.total_text}>$ {coffee?.price.toFixed(2)}</Text>
         </View>
       </View>
-      <View style={{ width: "80%", alignSelf: "center" }}>
+      <TouchableOpacity
+        style={{ width: "80%", alignSelf: "center" }}
+        onPress={() => (
+          dispatch(addOrder(coffee)), navigation.navigate("Cart")
+        )}
+      >
         <BlueButton width={316} height={46} text="Checkout" icon={null} />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
