@@ -5,7 +5,7 @@ import ColdCoffeeCup from "../components/svg/ColdCoffeeCup";
 import SmallCup from "../components/svg/SmallCup";
 import MediumCup from "../components/svg/MediumCup";
 import BigCup from "../components/svg/BigCup";
-
+import BlueButton from "../components/BlueButton";
 export function Details({ route }) {
   const { name, img, price } = route.params;
   const [order_number, setOrder_number] = useState(1);
@@ -15,7 +15,7 @@ export function Details({ route }) {
     shot: "SINGLE",
     type: "COLD",
     size: "MEDIUM",
-    ice: 3,
+    ice: "THREE",
   });
 
   const update_order = (operation) => {
@@ -68,6 +68,24 @@ export function Details({ route }) {
         setCoffee((prevData) => ({
           ...prevData,
           size: operation,
+        }));
+        break;
+      case "ONE":
+        setCoffee((prevData) => ({
+          ...prevData,
+          ice: operation,
+        }));
+        break;
+      case "TWO":
+        setCoffee((prevData) => ({
+          ...prevData,
+          ice: operation,
+        }));
+        break;
+      case "THREE":
+        setCoffee((prevData) => ({
+          ...prevData,
+          ice: operation,
         }));
         break;
     }
@@ -169,6 +187,82 @@ export function Details({ route }) {
           </TouchableOpacity>
         </View>
       </View>
+      {/* ice container */}
+      <View style={[styles.name_container, { alignItems: "baseline" }]}>
+        <View>
+          <Text style={styles.name}>Ice</Text>
+        </View>
+        <View style={styles.type_container}>
+          <TouchableOpacity onPress={() => update_order("ONE")}>
+            {/* set the color based on the coffee.ice state */}
+
+            <View
+              style={[
+                styles.ice,
+                { borderColor: coffee.ice === "ONE" ? "#FF7465" : "gray" },
+              ]}
+            ></View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => update_order("TWO")}
+            style={{ flexDirection: "row" }}
+          >
+            {/* set the color based on the coffee.ice state */}
+            <View
+              style={[
+                styles.ice,
+                { borderColor: coffee.ice === "TWO" ? "#FF7465" : "gray" },
+              ]}
+            ></View>
+            <View
+              style={[
+                styles.ice,
+                {
+                  borderColor: coffee.ice === "TWO" ? "#FF7465" : "gray",
+                  marginVertical: 5,
+                },
+              ]}
+            ></View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => update_order("THREE")}
+            style={{ alignItems: "center" }}
+          >
+            {/* set the color based on the coffee.ice state */}
+            <View
+              style={[
+                styles.ice,
+                { borderColor: coffee.ice === "THREE" ? "#FF7465" : "gray" },
+              ]}
+            ></View>
+            <View style={{ flexDirection: "row" }}>
+              <View
+                style={[
+                  styles.ice,
+                  { borderColor: coffee.ice === "THREE" ? "#FF7465" : "gray" },
+                ]}
+              ></View>
+              <View
+                style={[
+                  styles.ice,
+                  { borderColor: coffee.ice === "THREE" ? "#FF7465" : "gray" },
+                ]}
+              ></View>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.total}>
+        <View>
+          <Text style={styles.total_text}>Total amount</Text>
+        </View>
+        <View>
+          <Text style={styles.total_text}>$3.0</Text>
+        </View>
+      </View>
+      <View style={{ width: "80%", alignSelf: "center" }}>
+        <BlueButton width={316} height={46} text="Checkout" icon={null} />
+      </View>
     </View>
   );
 }
@@ -230,7 +324,7 @@ const styles = StyleSheet.create({
     width: 73,
     height: 29,
     borderRadius: 50,
-    borderWidth: 1.2,
+    borderWidth: 1.7,
     borderColor: "rgba(216, 216, 216, 0.40)",
     justifyContent: "space-around",
     alignItems: "center",
@@ -240,5 +334,23 @@ const styles = StyleSheet.create({
   type_container: {
     flexDirection: "row",
     gap: 40,
+  },
+  ice: {
+    width: 14,
+    height: 14,
+    borderRadius: 4,
+    borderWidth: 1.7,
+  },
+  total: {
+    width: "80%",
+    alignSelf: "center",
+    justifyContent: "space-between",
+
+    flexDirection: "row",
+  },
+  total_text: {
+    color: "#001833",
+    fontSize: 16,
+    fontFamily: "Poppins_500Medium",
   },
 });
