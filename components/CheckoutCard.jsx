@@ -6,13 +6,16 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteItem } from "../store/orderSlice";
 import DeleteIcon from "./svg/Delete";
 
 export function CheckoutCard({ data }) {
-  const { img, name, price, quantity, shot, type, size, ice } = data;
+  const { img, name, price, quantity, shot, type, size, ice, id } = data;
   const [pressed, setPressed] = useState(false);
-  const carContainer = useRef();
+  const dispatch = useDispatch();
+  console.log(id);
 
   const handleCardPress = () => {
     setPressed(!pressed);
@@ -24,7 +27,6 @@ export function CheckoutCard({ data }) {
           styles.container_without_button,
           { marginLeft: pressed ? -70 : 0 },
         ]}
-        ref={carContainer}
         onPress={() => handleCardPress()}
       >
         <View>
@@ -52,6 +54,7 @@ export function CheckoutCard({ data }) {
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.delete_button, { display: pressed ? "flex" : "none" }]}
+        onPress={() => dispatch(deleteItem(id))}
       >
         <DeleteIcon />
       </TouchableOpacity>
