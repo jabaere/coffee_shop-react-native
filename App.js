@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import Constants from "expo-constants";
-
+//screens
 import { GreetingScreen } from "./screens/GreetingScreen";
 import { Login } from "./screens/Login";
 import { SignUp } from "./screens/SignUp";
@@ -11,6 +11,8 @@ import { Forgotpassword } from "./screens/Forgotpassword";
 import { Verification } from "./screens/Verification";
 import { HomePage } from "./screens/HomePage";
 import { Cart } from "./screens/Cart";
+import { Profile } from "./screens/Profile";
+//
 import BottomTabNavigator from "./screens/bottom_navigation/BottomTab";
 import { Details } from "./screens/Details";
 import { AntDesign } from "@expo/vector-icons";
@@ -22,6 +24,7 @@ import {
 import { DMSans_500Medium } from "@expo-google-fonts/dm-sans";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import { TouchableOpacity } from "react-native";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -136,7 +139,7 @@ export default function App() {
           <Stack.Screen
             name="Details"
             component={Details}
-            options={{
+            options={({ navigation }) => ({
               title: "Details",
               headerStyle: {},
               headerTitleContainerStyle: {
@@ -151,15 +154,26 @@ export default function App() {
                 fontFamily: "Poppins_500Medium",
               },
               headerRight: () => (
-                <View style={{ marginRight: 25 }}>
+                <TouchableOpacity
+                  style={{ marginRight: 25 }}
+                  onPress={() => navigation.navigate("Cart")}
+                >
                   <AntDesign name="shoppingcart" size={26} color="#001833" />
-                </View>
+                </TouchableOpacity>
               ),
-            }}
+            })}
           />
           <Stack.Screen
             name="Cart"
             component={Cart}
+            options={{
+              title: "",
+              headerStyle: {},
+            }}
+          />
+          <Stack.Screen
+            name="Profile"
+            component={Profile}
             options={{
               title: "",
               headerStyle: {},

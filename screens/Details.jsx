@@ -287,7 +287,7 @@ export function Details({ route }) {
           dispatch(addOrder(coffee)), navigation.navigate("Cart")
         )}
       >
-        <BlueButton width={316} height={46} text="Checkout" icon={null} />
+        <BlueButton width={316} height={46} text="Add to cart" icon={null} />
       </TouchableOpacity>
     </View>
   );

@@ -48,6 +48,7 @@ export function HomePage() {
           <TouchableOpacity
             onPress={() => {
               /*navigate shopping cart*/
+              navigation.navigate("Cart");
             }}
           >
             <AntDesign name="shoppingcart" size={26} color="#001833" />
@@ -55,6 +56,7 @@ export function HomePage() {
           <TouchableOpacity
             onPress={() => {
               /*navigate shopping profile*/
+              navigation.navigate("Profile");
             }}
           >
             <AntDesign name="user" size={26} color="#001833" />

@@ -26,9 +26,11 @@ import MessageIcon from "../assets/svg/MessageIcon.svg";
 import LockIcon from "../assets/svg/LockIcon.svg";
 import ShowIcon from "../assets/svg/ShowIcon.svg";
 import { isValidEmail } from "../utils/globalFuntions";
+import { useSelector, useDispatch } from "react-redux";
+import { addEmailToProfile } from "../store/profileSlice";
 export const Login = () => {
   const navigation = useNavigation();
-
+  const dispatch = useDispatch();
   //manage email && pasword states
 
   const [showPassword, setShowPassword] = useState(false);
@@ -105,7 +107,7 @@ export const Login = () => {
   const handleSubmit = () => {
     if (validateForm()) {
       console.log("Submitting form...");
-
+      dispatch(addEmailToProfile({ email: formData.email }));
       // Simulate a fake API call
       setTimeout(() => {
         console.log("Form submitted:", formData);
