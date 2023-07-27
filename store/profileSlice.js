@@ -43,6 +43,14 @@ export const profileSlice = createSlice({
       }));
       return updatedState;
     },
+    updateProperty: (state, action) => {
+      const { id, property, value } = action.payload;
+
+      const updatedState = state.map((item) =>
+        item.id === id ? { ...item, [property]: value } : item
+      );
+      return updatedState;
+    },
     deleteItem: (state, action) => {
       const itemToDelete = action.payload;
       return state.filter((item) => item.id !== itemToDelete);
@@ -51,6 +59,6 @@ export const profileSlice = createSlice({
 });
 
 //keep adding the reducers' names to make them available globally
-export const { addEmailToProfile } = profileSlice.actions;
+export const { addEmailToProfile, updateProperty } = profileSlice.actions;
 
 export default profileSlice.reducer;

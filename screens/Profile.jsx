@@ -1,31 +1,105 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  FlatList,
+  TextInput,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import UserSVG from "../components/svg/User";
 import EditSVG from "../components/svg/EditSVG";
 import CallSVG from "../components/svg/CallSVG";
 import EmailSVG from "../components/svg/EmailSVG";
 import LocationSVG from "../components/svg/LocationSVG";
+import { MaterialIcons } from "@expo/vector-icons";
+
+import { updateProperty } from "../store/profileSlice";
 export function Profile() {
   const data = useSelector((state) => state.profile);
+  const [edit, setEdit] = useState("");
+  const dispatch = useDispatch();
+  const [profileData, setProfileData] = useState({
+    name: "",
+    number: "",
+    email: "",
+    adress: "",
+  });
+  const handleInputChange = (field, value) => {
+    setProfileData((prevFormData) => ({
+      ...prevFormData,
+      [field]: value,
+    }));
+  };
+
+  const renderCardContent = (item) => {
+    if (edit === item.id) {
+      // Render TextInput in edit mode
+      return (
+        <TextInput
+          style={styles.input}
+          onChangeText={(value) => handleInputChange(item.id, value)}
+          value={profileData[item.id]}
+          autoFocus={edit === item.id}
+        />
+      );
+    } else {
+      // Render Text in view mode
+      return <Text style={styles.user}>{getLabel({ item })}</Text>;
+    }
+  };
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.name}>Profile</Text>
-      </View>
-      {data.map((item, index) => (
-        <View style={styles.card} key={index}>
-          <View style={styles.img_container}>{getProfileIcon(item.id)}</View>
-          <View style={styles.name_container}>
-            <Text style={styles.placeholder}>{item.placeholder}</Text>
-            {getLabel({ item })}
-          </View>
-          <View style={styles.edit_icon}>
-            <EditSVG color="#324A59" />
-          </View>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : null} // Add behavior prop
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : -200}
+    >
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View>
+          <Text style={styles.name}>Profile</Text>
         </View>
-      ))}
-    </View>
+        {data.map((item, index) => (
+          <View style={styles.card} key={index}>
+            <View style={styles.img_container}>{getProfileIcon(item.id)}</View>
+            <View style={styles.name_container}>
+              <Text style={styles.placeholder}>{item.placeholder}</Text>
+              {renderCardContent(item)}
+            </View>
+
+            {edit !== item.id ? (
+              <TouchableOpacity
+                style={styles.edit_icon}
+                onPress={() => setEdit(item.id)}
+              >
+                <EditSVG color="#324A59" />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                style={styles.edit_icon}
+                onPress={() => {
+                  setEdit(""); //set the edit state to empty to exit edit mode
+                  dispatch(
+                    updateProperty({
+                      id: item.id,
+                      property: item.id,
+                      value: profileData[item.id],
+                    })
+                  ); // Dispatch the updateProperty action to update the state
+                }}
+              >
+                <MaterialIcons name="done" size={24} color="black" />
+              </TouchableOpacity>
+            )}
+          </View>
+        ))}
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -48,15 +122,13 @@ const getLabel = ({ item }) => {
   console.log(item.email);
   switch (item.id) {
     case "name":
-      return <Text style={styles.user}>{item.name}</Text>;
+      return item.name;
     case "number":
-      return <Text style={styles.user}>{item.number}</Text>;
+      return item.number;
     case "email":
-      return item?.email ? (
-        <Text style={styles.user}>{item?.email}</Text>
-      ) : null;
+      return item?.email ? item?.email : null;
     case "adress":
-      return <Text style={styles.user}>{item.adress}</Text>;
+      return item.adress;
 
     default:
       return null;
@@ -108,4 +180,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   edit_icon: {},
+  input: {
+    height: 40,
+    width: "80%",
+    borderWidth: 1,
+
+    borderWidth: 0,
+    fontSize: 12,
+    fontFamily: "Poppins_500Medium",
+  },
 });
