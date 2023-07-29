@@ -168,7 +168,10 @@ export default function App() {
             component={Cart}
             options={{
               title: "",
-              headerStyle: {},
+              headerStyle: {
+                borderBottomWidth: 0,
+                elevation: 0,
+              },
             }}
           />
           <Stack.Screen

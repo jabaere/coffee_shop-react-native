@@ -3,9 +3,14 @@ import React from "react";
 
 export default function BlueButton({ width, height, text, icon }) {
   return (
-    <View style={[styles.container, { with: width, height: height }]}>
+    <View
+      style={[
+        styles.container,
+        { with: width, height: height, alignItems: "center" },
+      ]}
+    >
+      <Text style={{ width: 24, height: 24 }}>{icon}</Text>
       <Text style={styles.text}>{text}</Text>
-      {icon}
     </View>
   );
 }
@@ -15,7 +20,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: "#324A59",
     flexDirection: "row",
-    gap: 10,
+
     justifyContent: "center",
     alignItems: "center",
   },

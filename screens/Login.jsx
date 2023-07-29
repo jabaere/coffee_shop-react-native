@@ -29,6 +29,7 @@ import { isValidEmail } from "../utils/globalFuntions";
 import { useSelector, useDispatch } from "react-redux";
 import { addEmailToProfile } from "../store/profileSlice";
 export const Login = () => {
+  const userData = useSelector((state) => state.profile);
   const navigation = useNavigation();
   const dispatch = useDispatch();
   //manage email && pasword states
@@ -107,7 +108,10 @@ export const Login = () => {
   const handleSubmit = () => {
     if (validateForm()) {
       console.log("Submitting form...");
-      dispatch(addEmailToProfile({ email: formData.email }));
+      if (userData.email !== formData.email) {
+        dispatch(addEmailToProfile({ email: formData.email }));
+      }
+
       // Simulate a fake API call
       setTimeout(() => {
         console.log("Form submitted:", formData);
