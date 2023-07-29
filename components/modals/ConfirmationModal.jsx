@@ -28,10 +28,10 @@ export default function ConfirmationModal({ name, adress }) {
         />
       );
     } else {
-      // Render Text in view mode
+      // Render Text in default
       console.log(adress + "  dasda");
       console.log(name + "  name");
-      return <Text style={styles.user}>{newAdress}</Text>;
+      return <Text style={styles.user_adress}>{newAdress}</Text>;
     }
   };
   return (
@@ -46,7 +46,7 @@ export default function ConfirmationModal({ name, adress }) {
             {<DeliveryIcon color="#000" />}
           </View>
           <View style={styles.name_container}>
-            <Text style={styles.placeholder}>{name}</Text>
+            <Text style={styles.name}>{name}</Text>
             {renderCardContent()}
           </View>
 
@@ -122,14 +122,26 @@ const styles = StyleSheet.create({
   },
   name_container: {
     flex: 1,
+    alignItems: "flex-start",
   },
   card: {
-    width: "80%",
+    width: "100%",
     alignSelf: "center",
     justifyContent: "space-between",
     flexDirection: "row",
     marginVertical: 38,
     gap: 27,
+
     alignItems: "center",
+  },
+  name: {
+    color: "#001833",
+    fontSize: 12,
+    fontFamily: "Poppins_500Medium",
+  },
+  user_adress: {
+    color: "#001833",
+    fontSize: 10,
+    fontFamily: "Poppins_500Medium",
   },
 });

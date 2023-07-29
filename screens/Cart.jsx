@@ -28,13 +28,17 @@ export function Cart({ route }) {
   const [ordered, setORdered] = useState(false);
 
   useEffect(() => {
-    userData.map((user) => {
+    const userObj = userData.filter((item) => item.id === "name");
+    //
+    const userAdress = userData.filter((item) => item.id === "adress");
+    console.log(userAdress);
+    if (userObj) {
       setUser({
-        name: user.name,
-        adress: user.adress,
+        name: userObj[0].name,
+        adress: userAdress[0].adress,
       });
-    });
-  }, [user.adress]);
+    }
+  }, [userData]);
   //change headerStyle depend orderClick
   useEffect(() => {
     navigation.setOptions({
@@ -46,7 +50,6 @@ export function Cart({ route }) {
         elevation: 0,
       },
     });
-    console.log(userData);
   }, [ordered]);
   return (
     <SafeAreaView
