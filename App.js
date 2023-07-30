@@ -12,6 +12,7 @@ import { Verification } from "./screens/Verification";
 import { HomePage } from "./screens/HomePage";
 import { Cart } from "./screens/Cart";
 import { Profile } from "./screens/Profile";
+import { OrderSuccess } from "./screens/OrderSuccess";
 //
 import BottomTabNavigator from "./screens/bottom_navigation/BottomTab";
 import { Details } from "./screens/Details";
@@ -181,6 +182,20 @@ export default function App() {
             options={{
               title: "",
               headerStyle: {},
+            }}
+          />
+          <Stack.Screen
+            name="order-success"
+            component={OrderSuccess}
+            options={{
+              title: "",
+              headerShown: false,
+              headerStyle: {
+                borderBottomWidth: 0, // Remove the bottom border
+              },
+              headerTitleStyle: {
+                display: "none", // Hide the header title
+              },
             }}
           />
         </Stack.Navigator>

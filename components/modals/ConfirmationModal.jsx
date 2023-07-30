@@ -14,6 +14,7 @@ import DeliveryIcon from "../svg/DeliverySVG";
 import { RadioButton } from "../RadioButton";
 import BlueButton from "../BlueButton";
 import Wallet from "../svg/Wallet";
+import { useNavigation } from "@react-navigation/native";
 export default function ConfirmationModal({ name, adress, totalPrice }) {
   const dispatch = useDispatch();
   const [newAdress, setNewAdress] = useState(adress);
@@ -22,6 +23,7 @@ export default function ConfirmationModal({ name, adress, totalPrice }) {
   const deliveryFee = 2;
   const total = totalPrice + tax + deliveryFee;
   const [selectedOption, setSelectedOption] = useState("Online Banking");
+  const navigation = useNavigation();
 
   const paymentOptions = [
     {
@@ -129,14 +131,17 @@ export default function ConfirmationModal({ name, adress, totalPrice }) {
           <Text style={styles.total_title}>Total Price</Text>
           <Text style={styles.total_price}>${total.toFixed(2)}</Text>
         </View>
-        <View style={{ width: 162 }}>
+        <TouchableOpacity
+          style={{ width: 162 }}
+          onPress={() => navigation.navigate("order-success")}
+        >
           <BlueButton
             width={162}
             height={51}
             text="Pay Now"
             icon={<Wallet />}
           />
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
