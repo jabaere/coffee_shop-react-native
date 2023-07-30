@@ -6,6 +6,7 @@ import { coffeeInfo } from "../utils/globalFuntions";
 import { AntDesign } from "@expo/vector-icons";
 import Glass from "../assets/svg/Glass.svg";
 import GlassFill from "../assets/svg/GlassFill.svg";
+import ShopingCart from "../components/svg/ShopingCart";
 export function HomePage() {
   const navigation = useNavigation();
   //detect period
@@ -51,7 +52,7 @@ export function HomePage() {
               navigation.navigate("Cart");
             }}
           >
-            <AntDesign name="shoppingcart" size={26} color="#001833" />
+            <ShopingCart size={26} color="transparent" sColor="#001833" />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {

@@ -6,10 +6,10 @@ export default function BlueButton({ width, height, text, icon }) {
     <View
       style={[
         styles.container,
-        { with: width, height: height, alignItems: "center" },
+        { with: width, height: height, alignItems: "center", gap: 17 },
       ]}
     >
-      <Text style={{ width: 24, height: 24 }}>{icon}</Text>
+      <View>{icon}</View>
       <Text style={styles.text}>{text}</Text>
     </View>
   );

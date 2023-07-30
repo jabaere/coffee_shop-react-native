@@ -16,6 +16,7 @@ import { Profile } from "./screens/Profile";
 import BottomTabNavigator from "./screens/bottom_navigation/BottomTab";
 import { Details } from "./screens/Details";
 import { AntDesign } from "@expo/vector-icons";
+import ShopingCart from "./components/svg/ShopingCart";
 import {
   useFonts,
   Poppins_500Medium,
@@ -158,7 +159,7 @@ export default function App() {
                   style={{ marginRight: 25 }}
                   onPress={() => navigation.navigate("Cart")}
                 >
-                  <AntDesign name="shoppingcart" size={26} color="#001833" />
+                  <ShopingCart size={26} color="transparent" sColor="#001833" />
                 </TouchableOpacity>
               ),
             })}

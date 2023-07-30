@@ -12,6 +12,7 @@ import { CheckoutCard } from "../components/CheckoutCard";
 import BlueButton from "../components/BlueButton";
 import { useNavigation } from "@react-navigation/native";
 import ConfirmationModal from "../components/modals/ConfirmationModal";
+import ShopingCart from "../components/svg/ShopingCart";
 export function Cart({ route }) {
   // const { quantity, shot, type, size, ice, name } = route.params;
   const navigation = useNavigation();
@@ -78,7 +79,12 @@ export function Cart({ route }) {
           style={{ width: 162 }}
           onPress={() => setORdered(true)}
         >
-          <BlueButton width={162} height={51} text="Checkout" icon="🛒" />
+          <BlueButton
+            width={162}
+            height={51}
+            text="Checkout"
+            icon={<ShopingCart color="transparent" sColor="#fff" />}
+          />
         </TouchableOpacity>
       </View>
       {ordered ? (

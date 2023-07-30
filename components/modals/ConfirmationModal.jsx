@@ -11,10 +11,35 @@ import { updateProperty } from "../../store/profileSlice";
 import EditSVG from "../svg/EditSVG";
 import { MaterialIcons } from "@expo/vector-icons";
 import DeliveryIcon from "../svg/DeliverySVG";
+import { RadioButton } from "../RadioButton";
+import BlueButton from "../BlueButton";
+import Wallet from "../svg/Wallet";
 export default function ConfirmationModal({ name, adress }) {
   const dispatch = useDispatch();
   const [newAdress, setNewAdress] = useState(adress);
   const [edit, setEdit] = useState(false);
+
+  const [selectedOption, setSelectedOption] = useState("Online Banking");
+
+  const paymentOptions = [
+    {
+      method: "Online Banking",
+      bank: "sharkbank (one-time)",
+      icon: [require("../../assets/img/fpx.png")],
+    },
+    {
+      method: "Credit Card",
+      bank: "2540 xxxx xxxx 2648",
+      icon: [
+        require("../../assets/img/visa.png"),
+        require("../../assets/img/mastercard.png"),
+      ],
+    },
+  ];
+
+  const handleSelect = (option) => {
+    setSelectedOption(option);
+  };
 
   const renderCardContent = () => {
     if (edit) {
@@ -76,6 +101,41 @@ export default function ConfirmationModal({ name, adress }) {
           )}
         </View>
       </View>
+      <View style={styles.radio_container}>
+        <RadioButton
+          options={paymentOptions}
+          selectedOption={selectedOption}
+          onSelect={handleSelect}
+        />
+      </View>
+      <View style={styles.price_details}>
+        <View style={styles.subtotal}>
+          <Text>Price</Text>
+          <Text>$9.00</Text>
+        </View>
+        <View style={styles.subtotal}>
+          <Text>Tax(10%)</Text>
+          <Text>$0.90</Text>
+        </View>
+        <View style={styles.subtotal}>
+          <Text>Delivery fee</Text>
+          <Text>$2.00</Text>
+        </View>
+      </View>
+      <View style={styles.button_container}>
+        <View>
+          <Text>Total Price</Text>
+          <Text>$11.20</Text>
+        </View>
+        <View style={{ width: 162 }}>
+          <BlueButton
+            width={162}
+            height={51}
+            text="Pay Now"
+            icon={<Wallet />}
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -86,7 +146,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     position: "absolute",
     elevation: 100,
-    height: 300,
     width: "100%",
     height: "100%",
     borderTopLeftRadius: 35,
@@ -143,5 +202,32 @@ const styles = StyleSheet.create({
     color: "#001833",
     fontSize: 10,
     fontFamily: "Poppins_500Medium",
+  },
+  radio_container: {
+    alignItems: "center",
+    marginVertical: 8,
+  },
+  selectedOptionText: {
+    marginTop: 20,
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  price_details: {
+    flexDirection: "column",
+    gap: 10,
+    width: "80%",
+    alignSelf: "center",
+  },
+  subtotal: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  button_container: {
+    width: "80%",
+    alignItems: "center",
+    marginVertical: 38,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignSelf: "center",
   },
 });
