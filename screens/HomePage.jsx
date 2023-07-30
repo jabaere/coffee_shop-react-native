@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector, useDispatch } from "react-redux";
 import CoffeeCard from "../components/CoffeeCard";
 import { coffeeInfo } from "../utils/globalFuntions";
 import { AntDesign } from "@expo/vector-icons";
@@ -10,7 +11,8 @@ import ShopingCart from "../components/svg/ShopingCart";
 export function HomePage() {
   const navigation = useNavigation();
   //detect period
-
+  const data = useSelector((state) => state.profile);
+  const userObj = data.filter((item) => item.id === "name");
   function getDayPeriod(currentHour) {
     // const currentHour = new Date().getHours();
 
@@ -43,7 +45,7 @@ export function HomePage() {
       <View style={styles.user}>
         <View style={styles.greeting}>
           <Text style={styles.user__greeting}>Good {dayPeriod}</Text>
-          <Text style={styles.user__name}>User</Text>
+          <Text style={styles.user__name}>{userObj[0].name}</Text>
         </View>
         <View style={styles.icons}>
           <TouchableOpacity

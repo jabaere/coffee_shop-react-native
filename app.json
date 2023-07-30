@@ -26,6 +26,10 @@
     "androidNavigationBar": {
       "visible": "sticky-immersive"
     },
+    "androidStatusBar": {
+      "backgroundColor": "#00000000",
+      "translucent": true
+    },
     "web": {
       "favicon": "./assets/favicon.png"
     }

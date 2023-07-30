@@ -1,7 +1,15 @@
-import { Text, View, StyleSheet, Image, ImageBackground } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  StatusBar,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StatusBar } from "expo-status-bar";
+
+//import { StatusBar } from "react-native";
 import Constants from "expo-constants";
 //screens
 import { GreetingScreen } from "./screens/GreetingScreen";
@@ -13,6 +21,7 @@ import { HomePage } from "./screens/HomePage";
 import { Cart } from "./screens/Cart";
 import { Profile } from "./screens/Profile";
 import { OrderSuccess } from "./screens/OrderSuccess";
+import { TrackOrder } from "./screens/TrackOrder";
 //
 import BottomTabNavigator from "./screens/bottom_navigation/BottomTab";
 import { Details } from "./screens/Details";
@@ -27,6 +36,7 @@ import { DMSans_500Medium } from "@expo-google-fonts/dm-sans";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { TouchableOpacity } from "react-native";
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -40,7 +50,12 @@ export default function App() {
   }
   return (
     <Provider store={store}>
-      <StatusBar style="light" backgroundColor={"transparent"} translucent />
+      <StatusBar
+        animated={true}
+        backgroundColor="transparent"
+        barStyle="default"
+        showHideTransition="fade"
+      />
       <NavigationContainer>
         <Stack.Navigator initialRouteName="GreetingScreen">
           <Stack.Screen
@@ -187,6 +202,20 @@ export default function App() {
           <Stack.Screen
             name="order-success"
             component={OrderSuccess}
+            options={{
+              title: "",
+              headerShown: false,
+              headerStyle: {
+                borderBottomWidth: 0, // Remove the bottom border
+              },
+              headerTitleStyle: {
+                display: "none", // Hide the header title
+              },
+            }}
+          />
+          <Stack.Screen
+            name="track-order"
+            component={TrackOrder}
             options={{
               title: "",
               headerShown: false,

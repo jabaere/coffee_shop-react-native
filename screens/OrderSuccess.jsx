@@ -3,7 +3,7 @@ import React from "react";
 import BagIcon from "../components/svg/BagSVG";
 import BlueButton from "../components/BlueButton";
 
-export function OrderSuccess() {
+export function OrderSuccess({ navigation }) {
   return (
     <View style={styles.container}>
       <BagIcon color="#001833" />
@@ -12,7 +12,10 @@ export function OrderSuccess() {
         Your order has been placed successfully. {"\n"}
         For more details, go to my orders.
       </Text>
-      <TouchableOpacity style={{ width: 315, marginTop: 81 }}>
+      <TouchableOpacity
+        style={{ width: 315, marginTop: 81 }}
+        onPress={() => navigation.navigate("track-order")}
+      >
         <BlueButton icon={null} width={315} height={46} text="Track My Order" />
       </TouchableOpacity>
     </View>

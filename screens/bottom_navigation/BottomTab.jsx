@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { HomePage } from "../HomePage";
 import { Orders } from "../Orders";
 import { Rewards } from "../Rewards";
-
+import ShopIcon from "../../components/svg/ShopSVG";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -96,9 +96,7 @@ const BottomTabNavigator = () => {
 
 const getTabIcon = (routeName, focused) => {
   if (routeName === "HomePage") {
-    return (
-      <AntDesign name="isv" size={24} color={focused ? "#000" : "#808080"} />
-    ); // No icon for HomePage
+    return <ShopIcon color={focused ? "#000" : "#808080"} />; // No icon for HomePage
   } else if (routeName === "Orders") {
     return (
       <MaterialCommunityIcons
