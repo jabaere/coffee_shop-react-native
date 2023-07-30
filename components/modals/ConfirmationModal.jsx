@@ -14,11 +14,13 @@ import DeliveryIcon from "../svg/DeliverySVG";
 import { RadioButton } from "../RadioButton";
 import BlueButton from "../BlueButton";
 import Wallet from "../svg/Wallet";
-export default function ConfirmationModal({ name, adress }) {
+export default function ConfirmationModal({ name, adress, totalPrice }) {
   const dispatch = useDispatch();
   const [newAdress, setNewAdress] = useState(adress);
   const [edit, setEdit] = useState(false);
-
+  const tax = (totalPrice * 10) / 100;
+  const deliveryFee = 2;
+  const total = totalPrice + tax + deliveryFee;
   const [selectedOption, setSelectedOption] = useState("Online Banking");
 
   const paymentOptions = [
@@ -110,22 +112,22 @@ export default function ConfirmationModal({ name, adress }) {
       </View>
       <View style={styles.price_details}>
         <View style={styles.subtotal}>
-          <Text>Price</Text>
-          <Text>$9.00</Text>
+          <Text style={styles.subtotal_title}>Price</Text>
+          <Text style={styles.subtotal_title}>${totalPrice.toFixed(2)}</Text>
         </View>
         <View style={styles.subtotal}>
-          <Text>Tax(10%)</Text>
-          <Text>$0.90</Text>
+          <Text style={styles.subtotal_title}>Tax(10%)</Text>
+          <Text style={styles.subtotal_title}>${tax.toFixed(2)}</Text>
         </View>
         <View style={styles.subtotal}>
-          <Text>Delivery fee</Text>
-          <Text>$2.00</Text>
+          <Text style={styles.subtotal_title}>Delivery fee</Text>
+          <Text style={styles.subtotal_title}>${deliveryFee.toFixed(2)}</Text>
         </View>
       </View>
       <View style={styles.button_container}>
         <View>
-          <Text>Total Price</Text>
-          <Text>$11.20</Text>
+          <Text style={styles.total_title}>Total Price</Text>
+          <Text style={styles.total_price}>${total.toFixed(2)}</Text>
         </View>
         <View style={{ width: 162 }}>
           <BlueButton
@@ -188,7 +190,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "space-between",
     flexDirection: "row",
-    marginVertical: 38,
+    marginVertical: 23,
     gap: 27,
 
     alignItems: "center",
@@ -205,7 +207,7 @@ const styles = StyleSheet.create({
   },
   radio_container: {
     alignItems: "center",
-    marginVertical: 8,
+    marginVertical: 23,
   },
   selectedOptionText: {
     marginTop: 20,
@@ -222,12 +224,27 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  subtotal_title: {
+    fontSize: 12,
+    fontFamily: "Poppins_500Medium",
+    color: "#001833",
+  },
   button_container: {
     width: "80%",
     alignItems: "center",
-    marginVertical: 38,
+    marginVertical: 35,
     flexDirection: "row",
     justifyContent: "space-between",
     alignSelf: "center",
+  },
+  total_title: {
+    color: "rgba(0, 24, 51, 0.22)",
+    fontSize: 12,
+    fontFamily: "Poppins_500Medium",
+  },
+  total_price: {
+    color: "#001833",
+    fontSize: 22,
+    fontFamily: "Poppins_500Medium",
   },
 });

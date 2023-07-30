@@ -88,7 +88,11 @@ export function Cart({ route }) {
         </TouchableOpacity>
       </View>
       {ordered ? (
-        <ConfirmationModal name={user.name} adress={user.adress} />
+        <ConfirmationModal
+          name={user.name}
+          adress={user.adress}
+          totalPrice={sum}
+        />
       ) : null}
     </SafeAreaView>
   );
