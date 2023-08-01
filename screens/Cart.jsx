@@ -16,7 +16,7 @@ import ShopingCart from "../components/svg/ShopingCart";
 export function Cart({ route }) {
   // const { quantity, shot, type, size, ice, name } = route.params;
   const navigation = useNavigation();
-  const data = useSelector((state) => state.orders);
+  const data = useSelector((state) => state.cart);
   const userData = useSelector((state) => state.profile);
   const sum = data.reduce(
     (accumulator, currentItem) => accumulator + currentItem.price,

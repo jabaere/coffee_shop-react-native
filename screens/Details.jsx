@@ -8,7 +8,7 @@ import MediumCup from "../components/svg/MediumCup";
 import BigCup from "../components/svg/BigCup";
 import BlueButton from "../components/BlueButton";
 import { useSelector, useDispatch } from "react-redux";
-import { addOrder } from "../store/orderSlice";
+import { addToCart } from "../store/cartSlice";
 export function Details({ route }) {
   const { name, img, price } = route.params;
   const navigation = useNavigation();
@@ -284,7 +284,7 @@ export function Details({ route }) {
       <TouchableOpacity
         style={{ width: "80%", alignSelf: "center" }}
         onPress={() => (
-          dispatch(addOrder(coffee)), navigation.navigate("Cart")
+          dispatch(addToCart(coffee)), navigation.navigate("Cart")
         )}
       >
         <BlueButton width={316} height={46} text="Add to cart" icon={null} />

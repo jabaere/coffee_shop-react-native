@@ -14,14 +14,14 @@ const areItemsEqual = (item1, item2) => {
   );
 };
 
-export const orderSlice = createSlice({
-  name: "orders",
+export const cartSlice = createSlice({
+  name: "cart",
   initialState,
   reducers: {
     initialState,
     //in case of typescript -
     //adding the type of payload action(data) we need to pass to this reducer (function).
-    addOrder: (state, action) => {
+    addToCart: (state, action) => {
       const newItem = action.payload;
       const existingItem = state.find((item) => areItemsEqual(item, newItem));
       //check if item exists
@@ -43,6 +43,6 @@ export const orderSlice = createSlice({
 });
 
 //keep adding the reducers' names to make them available globally
-export const { addOrder, deleteItem } = orderSlice.actions;
+export const { addToCart, deleteItem } = cartSlice.actions;
 
-export default orderSlice.reducer;
+export default cartSlice.reducer;

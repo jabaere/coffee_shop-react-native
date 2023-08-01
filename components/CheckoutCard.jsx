@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteItem } from "../store/orderSlice";
+import { deleteItem } from "../store/cartSlice";
 import DeleteIcon from "./svg/Delete";
 
 export function CheckoutCard({ data }) {
