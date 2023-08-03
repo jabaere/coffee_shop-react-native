@@ -22,6 +22,8 @@ import { Cart } from "./screens/Cart";
 import { Profile } from "./screens/Profile";
 import { OrderSuccess } from "./screens/OrderSuccess";
 import { TrackOrder } from "./screens/TrackOrder";
+import { CallScreen } from "./screens/CallScreen";
+import { MessageScreen } from "./screens/MessageScreen";
 //
 import BottomTabNavigator from "./screens/bottom_navigation/BottomTab";
 import { Details } from "./screens/Details";
@@ -226,6 +228,39 @@ export default function App() {
                 display: "none", // Hide the header title
               },
             }}
+          />
+          <Stack.Screen
+            name="call"
+            component={CallScreen}
+            options={{
+              title: "",
+              headerShown: false,
+              headerStyle: {
+                borderBottomWidth: 0, // Remove the bottom border
+              },
+              headerTitleStyle: {
+                display: "none", // Hide the header title
+              },
+            }}
+          />
+          <Stack.Screen
+            name="message"
+            component={MessageScreen}
+            options={({ navigation, route }) => ({
+              title: route.params.operatorName,
+              headerStyle: {},
+              headerTitleContainerStyle: {
+                justifyContent: "center",
+                flexDirection: "row",
+                alignItems: "center",
+                width: "60%",
+                alignSelf: "center",
+              },
+              headerTitleStyle: {
+                textAlign: "center",
+                fontFamily: "Poppins_500Medium",
+              },
+            })}
           />
         </Stack.Navigator>
       </NavigationContainer>

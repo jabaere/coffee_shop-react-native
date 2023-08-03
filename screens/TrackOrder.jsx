@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CallSVG from "../components/svg/CallSVG";
 import MessageIcon from "../components/svg/MessageSVG";
 import BackArrowSVG from "../components/svg/BackArrowSVG";
-
+import AnimatedDots from "../components/AnimatedDots";
 //
 export function TrackOrder({ navigation }) {
   const [active, setActive] = useState("prep");
@@ -49,10 +49,20 @@ export function TrackOrder({ navigation }) {
             <Text style={styles.user_name}>Wu Liuqi</Text>
           </View>
           <View style={{ flexDirection: "row", gap: 12 }}>
-            <TouchableOpacity style={styles.icons_container}>
+            <TouchableOpacity
+              style={styles.icons_container}
+              onPress={() =>
+                navigation.navigate("call", { operatorName: "Wu Liuqi" })
+              }
+            >
               <CallSVG color="#fff" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.icons_container}>
+            <TouchableOpacity
+              style={styles.icons_container}
+              onPress={() =>
+                navigation.navigate("message", { operatorName: "Wu Liuqi" })
+              }
+            >
               <MessageIcon color="#fff" />
             </TouchableOpacity>
           </View>
@@ -83,20 +93,9 @@ export function TrackOrder({ navigation }) {
           </View>
         </View>
         {/* {dots} */}
-        <View style={styles.dot_cotaniner}>
-          {[1, 2, 3].map((dots, index) => (
-            <View
-              style={{
-                width: 5,
-                height: 5,
-                borderRadius: 100,
 
-                backgroundColor: "rgba(50, 74, 89, 0.22)",
-              }}
-              key={index}
-            ></View>
-          ))}
-        </View>
+        <AnimatedDots />
+
         {/* {delivery container} */}
         <View style={styles.status_container}>
           <View
