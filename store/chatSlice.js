@@ -7,12 +7,16 @@ const initialState = [
     operator: "Wu Liuqi",
     message: "erererere",
     type: "user",
+    timestamp: "",
+    id: "1",
   },
   {
     user: "user562",
     operator: "Wu Liuqi",
     message: "dasdasdasdasdasdasda",
     type: "operator",
+    timestamp: "",
+    id: "2",
   },
 ];
 

@@ -4,11 +4,10 @@ import {
   View,
   TextInput,
   KeyboardAvoidingView,
-  ScrollView,
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PaperPlaneSVG from "../components/svg/PaperPlaneSVG";
 import { addToChat } from "../store/chatSlice";
@@ -20,51 +19,51 @@ export function MessageScreen({ route }) {
   const userData = useSelector((state) => state.profile);
   const userName = userData.filter((item) => item.id === "name")[0];
   const { operatorName } = route.params;
+  const flatListRef = useRef(null);
 
+  //handle message input
   const handleMessage = (value) => {
     setMessage(value);
   };
+
+  //scroll to last message
+  useEffect(() => {
+    if (flatListRef.current) {
+      flatListRef.current.scrollToEnd();
+    }
+  }, [chatData]);
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : null} // Add behavior prop
+      behavior={Platform.OS === "ios" ? "padding" : null}
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : -200}
     >
-      <View syle={styles.container}>
-        <View
-          style={{
-            width: "80%",
-            alignSelf: "center",
-            columnGap: 54,
-            marginTop: 54,
-            maxHeight: "90%",
-            zIndex: 3,
-            marginVertical: 124,
-          }}
-        >
-          <FlatList
-            data={chatData}
-            renderItem={({ item }) => (
+      <View style={styles.messageContainer}>
+        <FlatList
+          ref={flatListRef}
+          data={chatData}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                alignItems: item.type === "user" ? "flex-end" : "flex-start",
+                marginBottom: 54,
+              }}
+            >
               <View
-                style={{
-                  alignItems: item.type === "user" ? "flex-end" : "flex-start",
-                  marginTop: 54,
-                }}
+                style={
+                  item.type === "user"
+                    ? styles.userMessageContainer
+                    : styles.operatorMessageContainer
+                }
               >
-                <View
-                  style={
-                    item.type === "user"
-                      ? styles.userMessageContainer
-                      : styles.operatorMessageContainer
-                  }
-                >
-                  <Text style={styles.message}>{item.message}</Text>
-                </View>
+                <Text style={styles.message}>{item.message}</Text>
               </View>
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
+              <Text style={styles.timestamp}>{item.timestamp}</Text>
+            </View>
+          )}
+          keyExtractor={(item) => item.id.toString()}
+        />
         <View style={styles.input_container}>
           <TextInput
             style={styles.input}
@@ -73,7 +72,7 @@ export function MessageScreen({ route }) {
             value={message}
           />
           <TouchableOpacity
-            style={{ marginLeft: -50 }}
+            style={{ right: 10, position: "absolute" }}
             onPress={() => {
               dispatch(
                 addToChat({
@@ -81,6 +80,8 @@ export function MessageScreen({ route }) {
                   operator: operatorName,
                   message: message,
                   type: "user",
+                  timestamp: new Date().toLocaleString(),
+                  id: Date.now(),
                 })
               );
               setMessage("");
@@ -99,40 +100,46 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     flex: 1,
   },
-  input_container: {
-    position: "absolute",
-    bottom: 20,
-
-    alignItems: "center",
-    flexDirection: "row",
-    borderRadius: 50,
-    borderWidth: 1.5,
-    borderColor: "#324A59",
-    color: "rgba(50, 74, 89, 0.22)",
-    width: 330,
+  messageContainer: {
+    flex: 1,
+    marginVertical: 56,
+    width: "90%",
     alignSelf: "center",
-    zIndex: 1000,
+  },
+  input_container: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    alignSelf: "center",
+    paddingVertical: 0,
+    backgroundColor: "#fff",
+    position: "absolute",
+    bottom: 0,
+    width: 330,
   },
   input: {
-    width: "100%",
+    flex: 1,
     height: 47,
-
     paddingLeft: 24,
-
     fontSize: 12,
     fontFamily: "Poppins_500Medium",
+    borderWidth: 1.5,
+    borderColor: "#324A59",
+    borderRadius: 50,
+
+    width: "100%",
   },
   userMessageContainer: {
     backgroundColor: "#324A59",
     borderRadius: 8,
-    height: 62,
-    width: "80%",
+    padding: 10,
+    alignSelf: "flex-end",
   },
   operatorMessageContainer: {
     backgroundColor: "#E4D5C9",
     borderRadius: 8,
-    height: 62,
-    width: "80%",
+    padding: 10,
+    alignSelf: "flex-start",
   },
   message: {
     color: "#fff",
@@ -140,6 +147,13 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     letterSpacing: -0.2,
     fontFamily: "Poppins_500Medium",
-    padding: 10,
+  },
+  timestamp: {
+    color: "rgba(0, 24, 51, 0.22)",
+    fontSize: 10,
+    fontFamily: "Poppins_500Medium",
+    marginTop: 5,
   },
 });
+
+export default MessageScreen;
