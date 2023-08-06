@@ -2,8 +2,10 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import CallSVG from "../components/svg/CallSVG";
+import Keypad from "../components/Keypad";
 export function CallScreen({ route, navigation }) {
   const { operatorName } = route.params;
+  const [inputValue, setInputValue] = useState("");
   const [seconds, setSeconds] = useState(0);
   const [call, setCall] = useState({
     incoming: true,
@@ -29,6 +31,16 @@ export function CallScreen({ route, navigation }) {
     return `${minutes.toString().padStart(2, "0")}:${seconds
       .toString()
       .padStart(2, "0")}`;
+  };
+
+  const handleKeyPress = (key) => {
+    if (key === "clear") {
+      setInputValue("");
+    } else if (key === "backspace") {
+      setInputValue(inputValue.slice(0, -1));
+    } else {
+      setInputValue(inputValue + key);
+    }
   };
 
   const resetTimer = () => {
@@ -82,7 +94,10 @@ export function CallScreen({ route, navigation }) {
 
         {/* {keypad} */}
         <View style={{ gap: 13 }}>
-          <TouchableOpacity style={styles.icon_container} onPress={() => {}}>
+          <TouchableOpacity
+            style={styles.icon_container}
+            onPress={() => setCall({ keyboard: !call.keyboard })}
+          >
             <Ionicons name="keypad-outline" size={33} color="#324A59" />
           </TouchableOpacity>
           <Text style={styles.icon_description}>Keypad</Text>
@@ -112,6 +127,13 @@ export function CallScreen({ route, navigation }) {
         >
           <CallSVG color="#fff" size={31} />
         </TouchableOpacity>
+      </View>
+
+      {/* {keypad} */}
+      <View style={{ width: "100%", position: "absolute", bottom: 50 }}>
+        {call.keyboard ? (
+          <Keypad close={() => setCall({ keyboard: false })} />
+        ) : null}
       </View>
     </View>
   );
