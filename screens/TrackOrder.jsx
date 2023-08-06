@@ -55,7 +55,7 @@ export function TrackOrder({ navigation }) {
                 navigation.navigate("call", { operatorName: "Wu Liuqi" })
               }
             >
-              <CallSVG color="#fff" />
+              <CallSVG color="#fff" size={16} />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.icons_container}
