@@ -64,9 +64,9 @@ export function Profile() {
         <View>
           <Text style={styles.name}>Profile</Text>
         </View>
-        {data.map((item, index) => (
+        {data?.map((item, index) => (
           <View style={styles.card} key={index}>
-            <View style={styles.img_container}>{getProfileIcon(item.id)}</View>
+            <View style={styles.img_container}>{getProfileIcon(item)}</View>
             <View style={styles.name_container}>
               <Text style={styles.placeholder}>{item.placeholder}</Text>
               {renderCardContent(item)}
@@ -104,22 +104,22 @@ export function Profile() {
 }
 
 //Display card icon based on card ID
-const getProfileIcon = (cardName) => {
-  switch (cardName) {
+function getProfileIcon(item) {
+  switch (item.id) {
     case "name":
       return <UserSVG color="#324A59" />;
     case "number":
-      return <CallSVG color="#324A59" />;
+      return <CallSVG color="#324A59" size={16} />;
     case "email":
       return <EmailSVG color="#324A59" />;
     case "adress":
       return <LocationSVG color="#324A59" />;
   }
-};
+}
 
 //get cardlabel based on card ID
-const getLabel = ({ item }) => {
-  console.log(item.email);
+function getLabel({ item }) {
+  //console.log(item.email);
   switch (item.id) {
     case "name":
       return item.name;
@@ -133,13 +133,12 @@ const getLabel = ({ item }) => {
     default:
       return null;
   }
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFFFFF",
     flex: 1,
-    width: "100%",
     paddingVertical: 23,
   },
   name: {

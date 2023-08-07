@@ -32,9 +32,6 @@ export const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
-    initialState,
-    //in case of typescript -
-    //adding the type of payload action(data) we need to pass to this reducer (function).
     addEmailToProfile: (state, action) => {
       const newItem = action.payload;
       const updatedState = state.map((item) => ({

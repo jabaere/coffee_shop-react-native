@@ -8,6 +8,7 @@ import { AntDesign } from "@expo/vector-icons";
 import Glass from "../assets/svg/Glass.svg";
 import GlassFill from "../assets/svg/GlassFill.svg";
 import ShopingCart from "../components/svg/ShopingCart";
+import LoyaltyCard from "../components/LoyaltyCard";
 export function HomePage() {
   const navigation = useNavigation();
   //detect period
@@ -66,7 +67,10 @@ export function HomePage() {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.loyalty}>
+
+      {/* {loyalty card} */}
+      <LoyaltyCard userOwn={loyalty.userOwn} total={loyalty.total} />
+      {/* <View style={styles.loyalty}>
         <View style={styles.textContainerLoyalty}>
           <Text style={styles.title}>Loyalty card</Text>
           <Text style={styles.title}>
@@ -79,7 +83,7 @@ export function HomePage() {
             index > 3 ? <Glass key={index} /> : <GlassFill key={index} />
           )}
         </View>
-      </View>
+      </View> */}
       <View style={styles.bottomContainer}>
         <View style={styles.subContainer}>
           <View>
