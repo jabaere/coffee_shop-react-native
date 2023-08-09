@@ -24,9 +24,6 @@ export const chatSlice = createSlice({
   name: "chat",
   initialState,
   reducers: {
-    initialState,
-    //in case of typescript -
-    //adding the type of payload action(data) we need to pass to this reducer (function).
     addToChat: (state, action) => {
       const newItem = action.payload;
       console.log(newItem);

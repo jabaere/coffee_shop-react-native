@@ -26,6 +26,7 @@ export function Details({ route }) {
     img,
     price,
     id: Date.now(),
+    timestamp: new Date().toLocaleString(),
   });
 
   const update_order = (operation) => {

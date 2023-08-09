@@ -39,10 +39,14 @@ export const cartSlice = createSlice({
       const itemToDelete = action.payload;
       return state.filter((item) => item.id !== itemToDelete);
     },
+    clearCard: (state, action) => {
+      const emptyState = [];
+      return emptyState;
+    },
   },
 });
 
 //keep adding the reducers' names to make them available globally
-export const { addToCart, deleteItem } = cartSlice.actions;
+export const { addToCart, deleteItem, clearCard } = cartSlice.actions;
 
 export default cartSlice.reducer;

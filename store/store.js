@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "./cartSlice";
 import profileReducer from "./profileSlice";
 import chatReducer from "./chatSlice";
+import orderReducer from "./orderSlice"
 export default configureStore({
   reducer: {
     // the "user" key will be used to identify the slice we are dealing with
@@ -9,5 +10,6 @@ export default configureStore({
     cart: cartReducer,
     profile: profileReducer,
     chat: chatReducer,
+    orderList: orderReducer,
   },
 });

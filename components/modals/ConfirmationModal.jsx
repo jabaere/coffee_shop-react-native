@@ -15,6 +15,8 @@ import { RadioButton } from "../RadioButton";
 import BlueButton from "../BlueButton";
 import Wallet from "../svg/Wallet";
 import { useNavigation } from "@react-navigation/native";
+import { addToOrderList } from "../../store/orderSlice";
+import { clearCard } from "../../store/cartSlice";
 export default function ConfirmationModal({ name, adress, totalPrice }) {
   const dispatch = useDispatch();
   const [newAdress, setNewAdress] = useState(adress);
@@ -25,6 +27,8 @@ export default function ConfirmationModal({ name, adress, totalPrice }) {
   const [selectedOption, setSelectedOption] = useState("Online Banking");
   const navigation = useNavigation();
 
+  //get cart data
+  const cartData = useSelector((state) => state.cart);
   const paymentOptions = [
     {
       method: "Online Banking",
@@ -133,7 +137,13 @@ export default function ConfirmationModal({ name, adress, totalPrice }) {
         </View>
         <TouchableOpacity
           style={{ width: 162 }}
-          onPress={() => navigation.navigate("order-success")}
+          onPress={() => {
+            //add data to the order
+            dispatch(addToOrderList(cartData));
+            //clear card
+            dispatch(clearCard());
+            navigation.navigate("order-success");
+          }}
         >
           <BlueButton
             width={162}
