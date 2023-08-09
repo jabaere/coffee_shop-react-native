@@ -9,7 +9,7 @@ export const orderSlice = createSlice({
   reducers: {
     addToOrderList: (state, action) => {
       const newItem = action.payload;
-      newItem.map((item) => state.push(item));
+      newItem.map((item) => state.unshift(item));
       // state.push(newItem);
     },
   },
