@@ -1,8 +1,16 @@
-import { StyleSheet, Text, View, FlatList, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState } from "react";
 import LoyaltyCard from "../components/LoyaltyCard";
+
 import { useSelector, useDispatch } from "react-redux";
-export function Rewards() {
+export function Rewards({ navigation }) {
   const [loyalty, setLoyalty] = useState({
     total: 8,
     userOwn: 4,
@@ -36,9 +44,12 @@ export function Rewards() {
             {calculatePTS(REWARD_COEFFICIENT)}
           </Text>
         </View>
-        <View style={styles.redeem_button}>
+        <TouchableOpacity
+          style={styles.redeem_button}
+          onPress={() => navigation.navigate("redeem")}
+        >
           <Text style={styles.redeem_button_input}>Redeem drinks</Text>
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={{ marginLeft: 20, marginTop: 31 }}>
         <Text style={styles.rewards_title}>History Rewards</Text>

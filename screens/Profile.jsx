@@ -113,7 +113,7 @@ function getProfileIcon(item) {
     case "email":
       return <EmailSVG color="#324A59" />;
     case "adress":
-      return <LocationSVG color="#324A59" />;
+      return <LocationSVG color="#324A59" size={20} />;
   }
 }
 

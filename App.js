@@ -24,6 +24,7 @@ import { OrderSuccess } from "./screens/OrderSuccess";
 import { TrackOrder } from "./screens/TrackOrder";
 import { CallScreen } from "./screens/CallScreen";
 import { MessageScreen } from "./screens/MessageScreen";
+import { RedeemScreen } from "./screens/RedeemScreen";
 //
 import BottomTabNavigator from "./screens/bottom_navigation/BottomTab";
 import { Details } from "./screens/Details";
@@ -261,6 +262,29 @@ export default function App() {
                 fontFamily: "Poppins_500Medium",
               },
             })}
+          />
+          <Stack.Screen
+            name="redeem"
+            component={RedeemScreen}
+            options={{
+              title: "Redeem",
+              headerStyle: {},
+              headerTitleContainerStyle: {
+                justifyContent: "center", // Center the title and the headerRight component
+                flexDirection: "row", // Arrange the title and headerRight component horizontally
+                alignItems: "center", // Align items vertically in the container
+                width: "60%",
+              },
+              headerTitleStyle: {
+                textAlign: "center", // Center the header title
+                flex: 1, // This will make the header title expand to take the remaining space
+                fontFamily: "Poppins_500Medium",
+                fontSize: 16,
+                lineHeight: 24,
+                letterSpacing: -0.28,
+                color: "#001833",
+              },
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>

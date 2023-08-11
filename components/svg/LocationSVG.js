@@ -1,8 +1,8 @@
 import React from "react";
 import { SvgXml } from "react-native-svg";
 
-const LocationSVG = ({ color }) => {
-  const svgMarkup = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+const LocationSVG = ({ color, size }) => {
+  const svgMarkup = `<svg width=${size} height=${size} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M10.2086 7.08333C9.40441 7.08333 8.75024 7.7375 8.75024 8.5425C8.75024 9.34666 9.40441 10 10.2086 10C11.0127 10 11.6669 9.34666 11.6669 8.5425C11.6669 7.7375 11.0127 7.08333 10.2086 7.08333ZM10.2086 11.25C8.71524 11.25 7.50024 10.0358 7.50024 8.5425C7.50024 7.04833 8.71524 5.83333 10.2086 5.83333C11.7019 5.83333 12.9169 7.04833 12.9169 8.5425C12.9169 10.0358 11.7019 11.25 10.2086 11.25Z" fill=${color}/>
   <mask id="mask0_26_266" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="3" y="1" width="15" height="17">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M3.33325 1.66666H17.0828V17.9167H3.33325V1.66666Z" fill="white"/>
@@ -12,7 +12,7 @@ const LocationSVG = ({ color }) => {
   </g>
 </svg>`;
 
-  return <SvgXml xml={svgMarkup} fill={color} />;
+  return <SvgXml xml={svgMarkup} fill={color} size={size} />;
 };
 
 export default LocationSVG;
