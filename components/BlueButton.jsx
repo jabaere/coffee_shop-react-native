@@ -1,16 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-export default function BlueButton({ width, height, text, icon }) {
+export default function BlueButton({ width, height, text, icon, fontSize }) {
   return (
-    <View
-      style={[
-        styles.container,
-        { with: width, height: height, alignItems: "center", gap: 17 },
-      ]}
-    >
-      <View>{icon}</View>
-      <Text style={styles.text}>{text}</Text>
+    <View style={[styles.container, { with: width, height: height }]}>
+      <View style={{ marginRight: 10 }}>{icon}</View>
+      <Text style={[styles.text, { fontSize: fontSize }]}>{text}</Text>
     </View>
   );
 }

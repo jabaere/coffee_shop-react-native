@@ -1,6 +1,6 @@
-import { Text, View, StyleSheet, Image, ImageBackground } from "react-native";
+import { Text, View, StyleSheet, ImageBackground } from "react-native";
+import React, { useEffect } from "react";
 //import { StatusBar } from 'expo-status-bar';
-import Constants from "expo-constants";
 import CoffeSvg from "../components/svg/CoffeSvg";
 
 import {
@@ -8,20 +8,27 @@ import {
   Poppins_500Medium,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
-import { useNavigation } from "@react-navigation/native";
-export function GreetingScreen() {
-  const navigation = useNavigation();
+
+export function GreetingScreen({ navigation }) {
+  //redirect to login page after 3.5sec
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate("greetingScreenTWo");
+    }, 3500);
+
+    return clearTimeout();
+  }, []);
 
   //handle login button click
-  const handleLoginPress = () => {
-    navigation.navigate("Login");
-  };
+  // const handleLoginPress = () => {
+  //   navigation.navigate("Login");
+  // };
 
-  //handle Sign up button click
+  // //handle Sign up button click
 
-  const handleSignUpPress = () => {
-    navigation.navigate("SignUp");
-  };
+  // const handleSignUpPress = () => {
+  //   navigation.navigate("SignUp");
+  // };
 
   let [fontsLoaded] = useFonts({
     Poppins_500Medium,
@@ -42,14 +49,14 @@ export function GreetingScreen() {
 
         <Text style={styles.paragraph}>Ordinary Coffe House.</Text>
 
-        <View style={styles.buttons_container}>
+        {/* <View style={styles.buttons_container}>
           <Text style={styles.button} onPress={handleLoginPress}>
             Log In
           </Text>
           <Text style={styles.button} onPress={handleSignUpPress}>
             Sign Up
           </Text>
-        </View>
+        </View> */}
       </ImageBackground>
     </View>
   );

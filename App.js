@@ -25,6 +25,7 @@ import { TrackOrder } from "./screens/TrackOrder";
 import { CallScreen } from "./screens/CallScreen";
 import { MessageScreen } from "./screens/MessageScreen";
 import { RedeemScreen } from "./screens/RedeemScreen";
+import { GreetingScreen_two } from "./screens/GreetingScreen_two";
 //
 import BottomTabNavigator from "./screens/bottom_navigation/BottomTab";
 import { Details } from "./screens/Details";
@@ -84,6 +85,20 @@ export default function App() {
             //   //   fontWeight: "bold", //Set Header text style
             //   // },
             // }}
+          />
+          <Stack.Screen
+            name="greetingScreenTWo"
+            component={GreetingScreen_two}
+            options={{
+              title: "",
+              headerShown: false,
+              headerStyle: {
+                borderBottomWidth: 0, // Remove the bottom border
+              },
+              headerTitleStyle: {
+                display: "none", // Hide the header title
+              },
+            }}
           />
           <Stack.Screen
             name="Login"

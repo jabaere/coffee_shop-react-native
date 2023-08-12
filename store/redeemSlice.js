@@ -7,18 +7,21 @@ const initialState = [
     image: require("../assets/img/americano.png"),
     priceInPTS: 1340,
     expirationDate: "09/12/2023",
+    id: 1,
   },
   {
     name: "Mocha",
     image: require("../assets/img/mocha.png"),
     priceInPTS: 1340,
     expirationDate: "09/10/2023",
+    id: 2,
   },
   {
     name: "Cappuccino",
     image: require("../assets/img/capuchino.png"),
     priceInPTS: 1340,
     expirationDate: "25/09/2023",
+    id: 3,
   },
 ];
 
