@@ -63,7 +63,7 @@ export function HomePage() {
               navigation.navigate("Profile");
             }}
           >
-            <AntDesign name="user" size={26} color="#001833" />
+            <AntDesign name="user" size={22} color="#001833" />
           </TouchableOpacity>
         </View>
       </View>

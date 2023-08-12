@@ -16,7 +16,7 @@ import CallSVG from "../components/svg/CallSVG";
 import EmailSVG from "../components/svg/EmailSVG";
 import LocationSVG from "../components/svg/LocationSVG";
 import { MaterialIcons } from "@expo/vector-icons";
-
+import { AntDesign } from "@expo/vector-icons";
 import { updateProperty } from "../store/profileSlice";
 export function Profile() {
   const data = useSelector((state) => state.profile);
@@ -107,7 +107,7 @@ export function Profile() {
 function getProfileIcon(item) {
   switch (item.id) {
     case "name":
-      return <UserSVG color="#324A59" />;
+      return <AntDesign name="user" size={16} color="#001833" />;
     case "number":
       return <CallSVG color="#324A59" size={16} />;
     case "email":

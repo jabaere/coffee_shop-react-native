@@ -12,29 +12,33 @@ import RenderORderItem from "../components/RenderORderItem";
 
 //create ongoing orders tab
 const OnGoingOrders = ({ orderData, userData }) => (
-  console.log(orderData),
-  console.log(userData),
-  (
-    <View style={{ flex: 1, backgroundColor: "#fff" }}>
-      <View style={styles.sub_container}>
-        {/* {[1, 2, 3].map((item) => (
-        <RenderORderItem />
-      ))} */}
-        <FlatList
-          data={orderData}
-          renderItem={({ item }) => (
-            <RenderORderItem data={item} userData={userData} />
-          )}
-          keyExtractor={(item) => item.id}
-          style={{ gap: 20 }}
-        />
-      </View>
+  <View style={{ flex: 1, backgroundColor: "#fff" }}>
+    <View style={styles.sub_container}>
+      <FlatList
+        data={orderData}
+        renderItem={({ item }) => (
+          <RenderORderItem data={item} userData={userData} />
+        )}
+        keyExtractor={(item) => item.id}
+        style={{ gap: 20 }}
+      />
     </View>
-  )
+  </View>
 );
 // create orders history tab
-const OrderHistory = () => (
-  <View style={{ flex: 1, backgroundColor: "#fff" }} />
+const OrderHistory = ({ orderData, userData }) => (
+  <View style={{ flex: 1, backgroundColor: "#fff" }}>
+    <View style={styles.sub_container}>
+      <FlatList
+        data={orderData}
+        renderItem={({ item }) => (
+          <RenderORderItem data={item} userData={userData} />
+        )}
+        keyExtractor={(item) => item.id}
+        style={{ gap: 20 }}
+      />
+    </View>
+  </View>
 );
 
 export function Orders() {
@@ -56,7 +60,7 @@ export function Orders() {
   // create render object
   const renderScene = SceneMap({
     ongoing: () => <OnGoingOrders orderData={orderData} userData={user} />,
-    history: OrderHistory,
+    history: () => <OrderHistory orderData={orderData} userData={user} />,
   });
   return (
     <TabView
@@ -94,6 +98,7 @@ const styles = StyleSheet.create({
   sub_container: {
     width: "80%",
     alignSelf: "center",
+    height: "90%",
   },
   status_sub_container: {
     flexDirection: "row",

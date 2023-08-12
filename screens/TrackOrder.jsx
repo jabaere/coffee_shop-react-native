@@ -16,7 +16,7 @@ export function TrackOrder({ navigation }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={{ width: "80%", marginTop: 57, alignSelf: "center" }}
+        style={{ width: "90%", marginTop: 37, alignSelf: "center" }}
         onPress={() => navigation.navigate("Home")}
       >
         <BackArrowSVG color="#000" />
@@ -25,7 +25,7 @@ export function TrackOrder({ navigation }) {
       <Text
         style={{
           textAlign: "center",
-          marginVertical: 140,
+          marginVertical: 150,
         }}
       >
         Here must be map 😊{" "}

@@ -6,8 +6,8 @@ import { HomePage } from "../HomePage";
 import { Orders } from "../Orders";
 import { Rewards } from "../Rewards";
 import ShopIcon from "../../components/svg/ShopSVG";
-import { AntDesign } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
+import GiftSVG from "../../components/svg/GiftSVG";
+import ListSVG from "../../components/svg/ListSVG";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 
@@ -98,21 +98,9 @@ const getTabIcon = (routeName, focused) => {
   if (routeName === "HomePage") {
     return <ShopIcon color={focused ? "#000" : "#808080"} />; // No icon for HomePage
   } else if (routeName === "Orders") {
-    return (
-      <MaterialCommunityIcons
-        name="archive-search-outline"
-        size={24}
-        color={focused ? "#000" : "#808080"}
-      />
-    ); // Icon for Orders
+    return <ListSVG color={focused ? "#000" : "#808080"} />; // Icon for Orders
   } else if (routeName === "Rewards") {
-    return (
-      <Ionicons
-        name="gift-outline"
-        size={24}
-        color={focused ? "#000" : "#808080"}
-      />
-    ); // Icon for Rewards
+    return <GiftSVG color={focused ? "#000" : "#808080"} />; // Icon for Rewards
   }
 
   return "";
