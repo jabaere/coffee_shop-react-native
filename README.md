@@ -1,6 +1,11 @@
 # coffee_shop-react-native
    ## 1. Even though I don't use the back-end, this is not just a front-end app. The app has some functionality, such as: 
       ### - Adding and removing products from the cart.
+      ### - Choose product via parameters, such as:
+            ### - Quantity
+            ### - Shot
+            ### - size
+            ### - with/without ice
       ### - Updating, editing, or removing profile information.
       ### - When the user logs in, the system creates a profile object with the user's email address and some default parameters, including a randomly generated Name.
    ## 2. Here is the basic structure of the project.
