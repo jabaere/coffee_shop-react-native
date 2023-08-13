@@ -1,19 +1,14 @@
 import React from "react";
 import { Text, View, StyleSheet, Dimensions } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import { HomePage } from "../HomePage";
 import { Orders } from "../Orders";
 import { Rewards } from "../Rewards";
 import ShopIcon from "../../components/svg/ShopSVG";
 import GiftSVG from "../../components/svg/GiftSVG";
 import ListSVG from "../../components/svg/ListSVG";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-const Tab = createBottomTabNavigator();
 
-//
-const windowHeight = Dimensions.get("window").height;
-const marginVertical = windowHeight * 0.9;
+const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
   return (
@@ -130,24 +125,5 @@ const styles = StyleSheet.create({
     padding: 12,
   },
 });
-// const styles = StyleSheet.create({
-//   tabBarIconContainer: {
-//     alignItems: "center",
-//     justifyContent: "center",
-//     height: 64,
-//     padding: 15,
-//     width: "100%",
-//   },
-//   tabBarContainer: {
-//     borderRadius: 10,
-//     overflow: "hidden",
-//     position: "absolute",
-//     bottom: 20,
-//     alignSelf: "center",
-//     width: "80%",
-//     backgroundColor: "#fff",
-//     elevation: 4,
-//   },
-// });
 
 export default BottomTabNavigator;

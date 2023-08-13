@@ -1,21 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
   StyleSheet,
-  Image,
-  ImageBackground,
   SafeAreaView,
   TextInput,
   TouchableOpacity,
   Keyboard,
-  KeyboardAvoidingView,
-  Platform,
   TouchableWithoutFeedback,
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Constants from "expo-constants";
 import { SubmitButton } from "../components/SubmitButton";
 import {
   useFonts,

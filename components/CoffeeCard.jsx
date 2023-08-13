@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Image, ImageBackground } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import React from "react";
 
 export default function ({ img, name }) {

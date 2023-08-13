@@ -1,13 +1,6 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteItem } from "../store/cartSlice";
 import DeleteIcon from "./svg/Delete";
 

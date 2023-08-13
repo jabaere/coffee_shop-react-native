@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import React from "react";
 import ArrowRight from "../assets/svg/ArrowRight.svg";
 export function SubmitButton({ submit }) {

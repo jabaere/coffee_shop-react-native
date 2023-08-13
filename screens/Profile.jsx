@@ -3,14 +3,12 @@ import {
   Text,
   View,
   TouchableOpacity,
-  FlatList,
   TextInput,
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import UserSVG from "../components/svg/User";
 import EditSVG from "../components/svg/EditSVG";
 import CallSVG from "../components/svg/CallSVG";
 import EmailSVG from "../components/svg/EmailSVG";

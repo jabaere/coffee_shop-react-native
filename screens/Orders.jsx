@@ -1,13 +1,7 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  useWindowDimensions,
-  FlatList,
-} from "react-native";
+import { StyleSheet, View, useWindowDimensions, FlatList } from "react-native";
 import React, { useState } from "react";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import RenderORderItem from "../components/RenderORderItem";
 
 //create ongoing orders tab

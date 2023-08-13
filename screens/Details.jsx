@@ -7,14 +7,13 @@ import SmallCup from "../components/svg/SmallCup";
 import MediumCup from "../components/svg/MediumCup";
 import BigCup from "../components/svg/BigCup";
 import BlueButton from "../components/BlueButton";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
 export function Details({ route }) {
   const { name, img, price } = route.params;
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [order_limit, setOrder_limit] = useState(34);
-  const [total_price, setTotal_price] = useState(price);
 
   const [coffee, setCoffee] = useState({
     quantity: 1,
@@ -38,6 +37,7 @@ export function Details({ route }) {
             ...prevData,
             quantity: prevData.quantity + 1,
             price: +prevData.price + +price,
+            id: Date.now(),
           }));
         break;
       case "DECREASE":
@@ -47,30 +47,35 @@ export function Details({ route }) {
             ...prevData,
             quantity: prevData.quantity - 1,
             price: +prevData.price - price,
+            id: Date.now(),
           }));
         break;
       case "SINGLE":
         setCoffee((prevData) => ({
           ...prevData,
           shot: operation,
+          id: Date.now(),
         }));
         break;
       case "DOUBLE":
         setCoffee((prevData) => ({
           ...prevData,
           shot: operation,
+          id: Date.now(),
         }));
         break;
       case "COLD":
         setCoffee((prevData) => ({
           ...prevData,
           type: operation,
+          id: Date.now(),
         }));
         break;
       case "HOT":
         setCoffee((prevData) => ({
           ...prevData,
           type: operation,
+          id: Date.now(),
         }));
         break;
 
@@ -78,36 +83,42 @@ export function Details({ route }) {
         setCoffee((prevData) => ({
           ...prevData,
           size: operation,
+          id: Date.now(),
         }));
         break;
       case "MEDIUM":
         setCoffee((prevData) => ({
           ...prevData,
           size: operation,
+          id: Date.now(),
         }));
         break;
       case "BIG":
         setCoffee((prevData) => ({
           ...prevData,
           size: operation,
+          id: Date.now(),
         }));
         break;
       case "ONE":
         setCoffee((prevData) => ({
           ...prevData,
           ice: operation,
+          id: Date.now(),
         }));
         break;
       case "TWO":
         setCoffee((prevData) => ({
           ...prevData,
           ice: operation,
+          id: Date.now(),
         }));
         break;
       case "THREE":
         setCoffee((prevData) => ({
           ...prevData,
           ice: operation,
+          id: Date.now(),
         }));
         break;
     }

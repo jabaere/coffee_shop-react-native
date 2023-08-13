@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import ShopIcon from "../components/svg/ShopSVG";
 import DeliveryIcon from "../components/svg/DeliverySVG";
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import CallSVG from "../components/svg/CallSVG";
 import MessageIcon from "../components/svg/MessageSVG";
 import BackArrowSVG from "../components/svg/BackArrowSVG";

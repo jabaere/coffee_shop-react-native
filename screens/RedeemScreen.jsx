@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import RedeemCard from "../components/RedeemCard";
 export function RedeemScreen() {
   const redeemData = useSelector((state) => state.redeemList);

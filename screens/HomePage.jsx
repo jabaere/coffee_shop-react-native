@@ -1,12 +1,10 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import CoffeeCard from "../components/CoffeeCard";
 import { coffeeInfo } from "../utils/globalFuntions";
 import { AntDesign } from "@expo/vector-icons";
-import Glass from "../assets/svg/Glass.svg";
-import GlassFill from "../assets/svg/GlassFill.svg";
 import ShopingCart from "../components/svg/ShopingCart";
 import LoyaltyCard from "../components/LoyaltyCard";
 export function HomePage() {

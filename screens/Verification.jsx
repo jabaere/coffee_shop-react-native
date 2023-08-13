@@ -2,7 +2,6 @@ import {
   Text,
   View,
   StyleSheet,
-  Image,
   SafeAreaView,
   TextInput,
   TouchableOpacity,
@@ -14,8 +13,6 @@ import {
 import React, { useState, useEffect, useRef } from "react";
 import Constants from "expo-constants";
 import { SubmitButton } from "../components/SubmitButton";
-import MessageIcon from "../assets/svg/MessageIcon.svg";
-import { isValidEmail } from "../utils/globalFuntions";
 import { useNavigation } from "@react-navigation/native";
 import { Countdown } from "../components/CountDown";
 

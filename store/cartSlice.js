@@ -18,9 +18,6 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    initialState,
-    //in case of typescript -
-    //adding the type of payload action(data) we need to pass to this reducer (function).
     addToCart: (state, action) => {
       const newItem = action.payload;
       const existingItem = state.find((item) => areItemsEqual(item, newItem));
@@ -28,7 +25,7 @@ export const cartSlice = createSlice({
       if (existingItem) {
         // Item already exists, increase the quantity, change item id and update price
         existingItem.quantity += newItem.quantity;
-        existingItem.id += newItem.id;
+        // existingItem.id += newItem.id;
         existingItem.price += newItem.price;
       } else {
         // Item does not exist, add it to the state

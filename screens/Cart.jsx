@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { CheckoutCard } from "../components/CheckoutCard";
 import BlueButton from "../components/BlueButton";
 import { useNavigation } from "@react-navigation/native";
