@@ -8,7 +8,9 @@
             ### - with/without ice
       ### - Updating, editing, or removing profile information.
       ### - When the user logs in, the system creates a profile object with the user's email address and some default parameters, including a randomly generated Name.
-   ## 2. Here is the basic structure of the project.
+      ### - When the user clicks the "Pay" button, it automatically clears the cart and places the order information in the "Orders" section.
+   ## 2. The app utilizes Redux Toolkit for global state management. 
+   ## 3. Here is the basic structure of the project.
 <pre>
 App.js
 android
