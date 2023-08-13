@@ -1,5 +1,5 @@
 # coffee_shop-react-native
-
+<pre>
 App.js
 android
 app.json
@@ -105,3 +105,4 @@ store
    |-- store.js
 utils
    |-- globalFuntions.js
+</pre>
