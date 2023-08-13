@@ -1,5 +1,5 @@
 # coffee_shop-react-native
-   ## 1. Even though I don't use the back-end, this is not just a front-end app. The app has some functionality, such as: 
+   ## 1. Even though I don't use the back-end, this is not just a front-end. The app has some functionality, such as: 
       ### - Adding and removing products from the cart.
       ### - Choose product via parameters, such as:
             ### - Quantity
