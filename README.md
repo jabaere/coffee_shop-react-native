@@ -1,7 +1,8 @@
 # coffee_shop-react-native
-   ## 1. Even though I don't use the back-end This is not just a front-end. App has some functionality such as: 
-      ### - Add/remove product from cart
-      ### - d
+   ## 1. Even though I don't use the back-end, this is not just a front-end app. The app has some functionality, such as: 
+      ### - Adding and removing products from the cart.
+      ### - Updating, editing, or removing profile information.
+      ### - When the user logs in, the system creates a profile object with the user's email address and some default parameters, including a randomly generated Name.
    ## 2. Here is the basic structure of the project.
 <pre>
 App.js
