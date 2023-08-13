@@ -1,5 +1,8 @@
 # coffee_shop-react-native
-   ## Here is the basic structure of the project.
+   ## 1. Even though I don't use the back-end This is not just a front-end. App has some functionality such as: 
+      ### - Add/remove product from cart
+      ### - d
+   ## 2. Here is the basic structure of the project.
 <pre>
 App.js
 android
