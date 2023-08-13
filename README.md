@@ -9,8 +9,14 @@
       ### - Updating, editing, or removing profile information.
       ### - When the user logs in, the system creates a profile object with the user's email address and some default parameters, including a randomly generated Name.
       ### - When the user clicks the "Pay" button, it automatically clears the cart and places the order information in the "Orders" section.
-   ## 2. The app utilizes Redux Toolkit for global state management. 
-   ## 3. Here is the basic structure of the project.
+   <span style="color: red;">
+   ## 2. The app allows users to log in with any email and password. 
+   It uses a simple email verification algorithm that doesn't require a specific email format, 
+   as long as the input contains the "@" symbol. For example, you can use "anything@oops.com" or 
+   any other email with "@" in it.
+   </span>
+   ## 3. The app utilizes Redux Toolkit for global state management. 
+   ## 4. Here is the basic structure of the project.
 <pre>
 App.js
 android
