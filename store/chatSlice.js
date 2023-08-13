@@ -7,7 +7,7 @@ const initialState = [
     operator: "Wu Liuqi",
     message: "erererere",
     type: "user",
-    timestamp: "",
+    timestamp: "9/12/2023, 6:28:06 PM",
     id: "1",
   },
   {
@@ -15,7 +15,7 @@ const initialState = [
     operator: "Wu Liuqi",
     message: "dasdasdasdasdasdasda",
     type: "operator",
-    timestamp: "",
+    timestamp: "9/12/2023, 6:38:06 PM",
     id: "2",
   },
 ];
@@ -26,7 +26,7 @@ export const chatSlice = createSlice({
   reducers: {
     addToChat: (state, action) => {
       const newItem = action.payload;
-      console.log(newItem);
+
       state.push(newItem);
     },
     deleteItem: (state, action) => {

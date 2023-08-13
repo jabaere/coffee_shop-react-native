@@ -166,7 +166,7 @@ export const Login = () => {
                   onChangeText={(value) => handleInputChange("password", value)}
                   value={formData.password}
                   secureTextEntry={!showPassword}
-                  keyboardType="visible-password"
+                  keyboardType="default"
                   placeholder={errors.password ? errors.password : "Password"}
                   placeholderTextColor={errors.password ? "red" : "#AAAAAA"}
                 />

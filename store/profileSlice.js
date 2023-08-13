@@ -8,7 +8,7 @@ const initialState = [
     placeholder: "Full name",
   },
   {
-    number: "",
+    number: "xx-xx-xx",
     id: "number",
     placeholder: "Phone number",
   },
@@ -18,7 +18,7 @@ const initialState = [
     placeholder: "Email",
   },
   {
-    adress: "",
+    adress: "xx-xx-xx",
     id: "adress",
     placeholder: "Address",
   },

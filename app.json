@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "coffe_house",
-    "slug": "coffe_house",
+    "name": "coffee_house",
+    "slug": "coffee_house",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/coffeeIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
