@@ -1,4 +1,5 @@
 # coffee_shop-react-native
+   ## Here is the basic structure of the project.
 <pre>
 App.js
 android
