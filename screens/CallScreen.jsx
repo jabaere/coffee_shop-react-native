@@ -5,8 +5,9 @@ import CallSVG from "../components/svg/CallSVG";
 import Keypad from "../components/Keypad";
 export function CallScreen({ route, navigation }) {
   const { operatorName } = route.params;
-  const [inputValue, setInputValue] = useState("");
-  const [seconds, setSeconds] = useState(0);
+const [seconds, setSeconds] = useState(0);
+
+  //call state
   const [call, setCall] = useState({
     incoming: true,
     operatorName: operatorName,
@@ -25,22 +26,13 @@ export function CallScreen({ route, navigation }) {
     return () => clearInterval(timer);
   }, [seconds]);
 
+  //function for format time
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     return `${minutes.toString().padStart(2, "0")}:${seconds
       .toString()
       .padStart(2, "0")}`;
-  };
-
-  const handleKeyPress = (key) => {
-    if (key === "clear") {
-      setInputValue("");
-    } else if (key === "backspace") {
-      setInputValue(inputValue.slice(0, -1));
-    } else {
-      setInputValue(inputValue + key);
-    }
   };
 
   const resetTimer = () => {

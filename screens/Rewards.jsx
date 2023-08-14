@@ -16,12 +16,12 @@ export function Rewards({ navigation }) {
     userOwn: 4,
   });
   const REWARD_COEFFICIENT = 12;
+  // Fetch orders data.
   const orderData = useSelector((state) => state.orderList);
   console.log(orderData);
 
+  //Implement an algorithm to calculate the reward coefficient based on REWARD_COEFFICIENT (quantity * coeficient).
   const calculatePTS = (coefficient) => {
-    //reward coefficient
-
     const sum = orderData.reduce(
       (accumulator, currentItem) => accumulator + currentItem.quantity,
       0

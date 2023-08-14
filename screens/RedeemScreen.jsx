@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import RedeemCard from "../components/RedeemCard";
 export function RedeemScreen() {
+  // Fetch data from the redeem state.
   const redeemData = useSelector((state) => state.redeemList);
   return (
     <View style={styles.container}>

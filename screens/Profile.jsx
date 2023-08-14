@@ -17,22 +17,27 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { updateProperty } from "../store/profileSlice";
 export function Profile() {
+  // Fetch data from the user's profile.
   const data = useSelector((state) => state.profile);
   const [edit, setEdit] = useState("");
   const dispatch = useDispatch();
+
+  //profile state
   const [profileData, setProfileData] = useState({
     name: "",
     number: "",
     email: "",
     adress: "",
   });
+
+  //Manage user input changes.
   const handleInputChange = (field, value) => {
     setProfileData((prevFormData) => ({
       ...prevFormData,
       [field]: value,
     }));
   };
-
+  //content to render within map function
   const renderCardContent = (item) => {
     if (edit === item.id) {
       // Render TextInput in edit mode

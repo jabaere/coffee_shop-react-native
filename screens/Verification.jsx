@@ -85,9 +85,7 @@ export function Verification() {
       // Simulate a fake API call
       setTimeout(() => {
         console.log("Form submitted:", formData);
-        // Perform any additional logic or API requests here
 
-        // Reset the form data after submission if needed
         // setFormData({
         //   email: "",
         // });

@@ -9,7 +9,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 const Keypad = ({ close }) => {
   const [inputValue, setInputValue] = useState("");
-
+  //Control the keypad behavior based on the input
   const handleKeyPress = (key) => {
     if (key === "clear") {
       setInputValue("");

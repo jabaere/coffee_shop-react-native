@@ -5,11 +5,12 @@ import { deleteItem } from "../store/cartSlice";
 import DeleteIcon from "./svg/Delete";
 
 export function CheckoutCard({ data }) {
+  //Destructuring data object
   const { img, name, price, quantity, shot, type, size, ice, id } = data;
   const [pressed, setPressed] = useState(false);
   const dispatch = useDispatch();
-  console.log(id);
-
+  
+  //show/hide delete button
   const handleCardPress = () => {
     setPressed(!pressed);
   };

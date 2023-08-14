@@ -3,32 +3,24 @@ import {
   Text,
   View,
   StyleSheet,
-  Image,
   SafeAreaView,
   TouchableOpacity,
   TextInput,
   ScrollView,
-  Keyboard,
   KeyboardAvoidingView,
-  Platform,
-  TouchableWithoutFeedback,
 } from "react-native";
 
-import { useNavigation } from "@react-navigation/native";
 import { SubmitButton } from "../components/SubmitButton";
 //icons
-import ProfileIcon from "../assets/svg/Profile.svg";
+
 import SmartPhoneIcon from "../assets/svg/SmartPhoneIcon.svg";
 import MessageIcon from "../assets/svg/MessageIcon.svg";
 import LockIcon from "../assets/svg/LockIcon.svg";
 import ShowIcon from "../assets/svg/ShowIcon.svg";
 import { AntDesign } from "@expo/vector-icons";
 import { isValidEmail } from "../utils/globalFuntions";
-import Constants from "expo-constants";
-import { Dimensions } from "react-native";
-export const SignUp = () => {
-  const navigation = useNavigation();
-  const screenWidth = Dimensions.get("window").width;
+
+export const SignUp = ({ navigation }) => {
   //manage states
   const [formData, setFormData] = useState({
     name: "",
@@ -43,23 +35,24 @@ export const SignUp = () => {
     email: "",
     password: "",
   });
-
+  // manage input changes
   const handleInputChange = (field, value) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [field]: value,
     }));
   };
+
   //handle password visibility
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
+  // redirect user to the login screen
   const handleSignInClick = () => {
     navigation.navigate("Login");
   };
-
+  //
   const validateForm = () => {
     let isValid = true;
     const updatedErrors = {};
@@ -95,7 +88,7 @@ export const SignUp = () => {
     setErrors(updatedErrors);
     return isValid;
   };
-
+  //
   const handleSubmit = () => {
     if (validateForm()) {
       console.log("Submitting form...");
@@ -103,9 +96,7 @@ export const SignUp = () => {
       // Simulate a fake API call
       setTimeout(() => {
         console.log("Form submitted:", formData);
-        // Perform any additional logic or API requests here
 
-        // Reset the form data after submission if needed
         setFormData({
           name: "",
           number: "",

@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 
 export const RadioButton = ({ options, selectedOption, onSelect }) => {
-  console.log(options);
   return (
     <View>
       {options.map((option) => (

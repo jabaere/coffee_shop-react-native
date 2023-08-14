@@ -19,17 +19,6 @@ export function GreetingScreen({ navigation }) {
     return clearTimeout();
   }, []);
 
-  //handle login button click
-  // const handleLoginPress = () => {
-  //   navigation.navigate("Login");
-  // };
-
-  // //handle Sign up button click
-
-  // const handleSignUpPress = () => {
-  //   navigation.navigate("SignUp");
-  // };
-
   let [fontsLoaded] = useFonts({
     Poppins_500Medium,
     Poppins_700Bold,
@@ -48,15 +37,6 @@ export function GreetingScreen({ navigation }) {
         <CoffeSvg style={styles.logo} />
 
         <Text style={styles.paragraph}>Ordinary Coffe House.</Text>
-
-        {/* <View style={styles.buttons_container}>
-          <Text style={styles.button} onPress={handleLoginPress}>
-            Log In
-          </Text>
-          <Text style={styles.button} onPress={handleSignUpPress}>
-            Sign Up
-          </Text>
-        </View> */}
       </ImageBackground>
     </View>
   );

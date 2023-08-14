@@ -14,7 +14,7 @@ export function Details({ route }) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [order_limit, setOrder_limit] = useState(34);
-
+  // product state
   const [coffee, setCoffee] = useState({
     quantity: 1,
     shot: "SINGLE",
@@ -27,7 +27,7 @@ export function Details({ route }) {
     id: Date.now(),
     timestamp: new Date().toLocaleString(),
   });
-
+  // Update the order when the product's properties have changed..
   const update_order = (operation) => {
     console.log(coffee);
     switch (operation) {

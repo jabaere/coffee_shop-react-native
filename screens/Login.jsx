@@ -10,7 +10,6 @@ import {
   TouchableWithoutFeedback,
   ScrollView,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { SubmitButton } from "../components/SubmitButton";
 import {
   useFonts,
@@ -23,9 +22,9 @@ import ShowIcon from "../assets/svg/ShowIcon.svg";
 import { isValidEmail } from "../utils/globalFuntions";
 import { useSelector, useDispatch } from "react-redux";
 import { addEmailToProfile } from "../store/profileSlice";
-export const Login = () => {
+export const Login = ({ navigation }) => {
   const userData = useSelector((state) => state.profile);
-  const navigation = useNavigation();
+
   const dispatch = useDispatch();
   //manage email && pasword states
 
@@ -38,8 +37,8 @@ export const Login = () => {
     email: "",
     password: "",
   });
-  //handle password visibility
 
+  //handle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -110,9 +109,7 @@ export const Login = () => {
       // Simulate a fake API call
       setTimeout(() => {
         console.log("Form submitted:", formData);
-        // Perform any additional logic or API requests here
 
-        // Reset the form data after submission if needed
         setFormData({
           email: "",
           password: "",

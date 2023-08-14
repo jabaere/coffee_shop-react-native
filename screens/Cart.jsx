@@ -13,15 +13,18 @@ import BlueButton from "../components/BlueButton";
 import { useNavigation } from "@react-navigation/native";
 import ConfirmationModal from "../components/modals/ConfirmationModal";
 import ShopingCart from "../components/svg/ShopingCart";
-export function Cart({ route }) {
-  // const { quantity, shot, type, size, ice, name } = route.params;
-  const navigation = useNavigation();
+export function Cart({ navigation }) {
+  // Fetch data from the cart.
   const data = useSelector((state) => state.cart);
+  // Fetch data from the user's profile.
   const userData = useSelector((state) => state.profile);
+
+  //Get the sum of products in the cart.
   const sum = data.reduce(
     (accumulator, currentItem) => accumulator + currentItem.price,
     0
   );
+  // user state
   const [user, setUser] = useState({
     name: "",
     adress: "",
@@ -40,7 +43,7 @@ export function Cart({ route }) {
       });
     }
   }, [userData]);
-  //change headerStyle depend orderClick
+  //change headerStyle when modal is opened
   useEffect(() => {
     navigation.setOptions({
       title: "",
