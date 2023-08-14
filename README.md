@@ -10,7 +10,7 @@
       ### - When the user logs in, the system creates a profile object with the user's email address and some default parameters, including a randomly generated Name.
       ### - When the user clicks the "Pay" button, it automatically clears the cart and places the order information in the "Orders" section.
   
-   ## 2. <mark>The app allows users to log in with any email and password. </mark>
+## 2. <mark>The app allows users to log in with any email and password. </mark>
    It uses a simple email verification algorithm that doesn't require a specific email format, 
    as long as the input contains the "@" symbol. For example, you can use "anything@oops.com" or 
    any other email with "@" in it.
