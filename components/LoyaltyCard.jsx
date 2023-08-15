@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Glass from "../assets/svg/Glass.svg";
-import GlassFill from "../assets/svg/GlassFill.svg";
+
+import GlassFillSVG from "./svg/GlassFillSVG";
 
 export default function LoyaltyCard({ userOwn, total }) {
   return (
@@ -15,7 +15,11 @@ export default function LoyaltyCard({ userOwn, total }) {
       <View style={styles.glassContainer}>
         {Array.from({ length: 8 }).map((item, index) =>
           //change glass color based API
-          index > 3 ? <Glass key={index} /> : <GlassFill key={index} />
+          index > 3 ? (
+            <GlassFillSVG color="#D8D8D8" bodyColor="#D8D8D8" key={index} />
+          ) : (
+            <GlassFillSVG color="#324A59" bodyColor="#E4D5C9" key={index} />
+          )
         )}
       </View>
     </View>

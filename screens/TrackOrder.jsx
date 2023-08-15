@@ -9,8 +9,11 @@ import BackArrowSVG from "../components/svg/BackArrowSVG";
 import AnimatedDots from "../components/AnimatedDots";
 //
 export function TrackOrder({ navigation }) {
+  //controll order status
   const [active, setActive] = useState("prep");
+  // Fetch data from the user's profile.
   const data = useSelector((state) => state.profile);
+  // Retrieve the 'name' object from the 'profile' array.
   const userObj = data.filter((item) => item.id === "name");
 
   return (

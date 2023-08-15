@@ -14,7 +14,8 @@ import {
 import React, { useState } from "react";
 import Constants from "expo-constants";
 import { SubmitButton } from "../components/SubmitButton";
-import MessageIcon from "../assets/svg/MessageIcon.svg";
+
+import MessageIcon from "../components/svg/MessageSVG";
 import { isValidEmail } from "../utils/globalFuntions";
 import { useNavigation } from "@react-navigation/native";
 export function Forgotpassword() {
@@ -91,7 +92,7 @@ export function Forgotpassword() {
             >
               <View style={styles.input_container}>
                 <View style={styles.icon_container}>
-                  <MessageIcon style={styles.icon} />
+                  <MessageIcon color="#001833" />
                 </View>
 
                 <TextInput

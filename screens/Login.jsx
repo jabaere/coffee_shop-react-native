@@ -16,12 +16,13 @@ import {
   Poppins_500Medium,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
-import MessageIcon from "../assets/svg/MessageIcon.svg";
-import LockIcon from "../assets/svg/LockIcon.svg";
-import ShowIcon from "../assets/svg/ShowIcon.svg";
+
 import { isValidEmail } from "../utils/globalFuntions";
 import { useSelector, useDispatch } from "react-redux";
 import { addEmailToProfile } from "../store/profileSlice";
+import EmailSVG from "../components/svg/EmailSVG";
+import LockSVG from "../components/svg/LockSVG";
+import EyeIcon from "../components/svg/EyeSVG";
 export const Login = ({ navigation }) => {
   const userData = useSelector((state) => state.profile);
 
@@ -139,7 +140,7 @@ export const Login = ({ navigation }) => {
             >
               <View style={styles.input_container}>
                 <View style={styles.icon_container}>
-                  <MessageIcon style={styles.icon} />
+                  <EmailSVG color="#001833" />
                 </View>
                 <TextInput
                   style={styles.input}
@@ -151,7 +152,7 @@ export const Login = ({ navigation }) => {
               </View>
               <View style={styles.input_container}>
                 <View style={styles.icon_container}>
-                  <LockIcon style={styles.icon} />
+                  <LockSVG color="#001833" />
                 </View>
                 <TextInput
                   style={styles.input}
@@ -163,7 +164,7 @@ export const Login = ({ navigation }) => {
                   placeholderTextColor={errors.password ? "red" : "#AAAAAA"}
                 />
                 <TouchableOpacity onPress={togglePasswordVisibility}>
-                  <ShowIcon style={styles.icon} fill="#001833" />
+                  <EyeIcon color="#001833" />
                 </TouchableOpacity>
               </View>
             </SafeAreaView>

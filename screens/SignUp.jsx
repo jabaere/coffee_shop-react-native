@@ -13,13 +13,12 @@ import {
 import { SubmitButton } from "../components/SubmitButton";
 //icons
 
-import SmartPhoneIcon from "../assets/svg/SmartPhoneIcon.svg";
-import MessageIcon from "../assets/svg/MessageIcon.svg";
-import LockIcon from "../assets/svg/LockIcon.svg";
-import ShowIcon from "../assets/svg/ShowIcon.svg";
+import SmartPhoneSVG from "../components/svg/SmartPhoneSVG";
 import { AntDesign } from "@expo/vector-icons";
 import { isValidEmail } from "../utils/globalFuntions";
-
+import EyeIcon from "../components/svg/EyeSVG";
+import LockSVG from "../components/svg/LockSVG";
+import MessageIcon from "../components/svg/MessageSVG";
 export const SignUp = ({ navigation }) => {
   //manage states
   const [formData, setFormData] = useState({
@@ -148,7 +147,7 @@ export const SignUp = ({ navigation }) => {
 
             <View style={styles.input_container}>
               <View style={styles.icon_container}>
-                <SmartPhoneIcon style={styles.icon} color="#FF0000" />
+                <SmartPhoneSVG color="#001833" />
               </View>
               <View style={{ flex: 1 }}>
                 <TextInput
@@ -169,7 +168,7 @@ export const SignUp = ({ navigation }) => {
             </View>
             <View style={styles.input_container}>
               <View style={styles.icon_container}>
-                <MessageIcon style={styles.icon} />
+                <MessageIcon color="#001833" />
               </View>
               <View style={{ flex: 1 }}>
                 <TextInput
@@ -186,7 +185,7 @@ export const SignUp = ({ navigation }) => {
             </View>
             <View style={styles.input_container}>
               <View style={styles.icon_container}>
-                <LockIcon style={styles.icon} />
+                <LockSVG color="#001833" />
               </View>
               <View
                 style={{
@@ -202,12 +201,11 @@ export const SignUp = ({ navigation }) => {
                   placeholderTextColor={errors.password ? "red" : "#AAAAAA"}
                 />
               </View>
-              <TouchableOpacity onPress={togglePasswordVisibility}>
-                <ShowIcon
-                  style={errors.password ? styles.hide : styles.icon}
-                  fill="#001833"
-                  // marginLeft: -10,
-                />
+              <TouchableOpacity
+                onPress={togglePasswordVisibility}
+                style={errors.password ? styles.hide : styles.icon}
+              >
+                <EyeIcon color="#001833" />
               </TouchableOpacity>
 
               {/* {errors.password && formData.password == "" && (
@@ -315,8 +313,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   icon: {
-    width: 28,
-    height: 28,
+   
   },
   error: {
     color: "red",

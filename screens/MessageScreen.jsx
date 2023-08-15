@@ -15,9 +15,13 @@ import { addToChat } from "../store/chatSlice";
 export function MessageScreen({ route }) {
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
+  // Fetch data from the chat.
   const chatData = useSelector((state) => state.chat);
+  // Fetch data from the user's profile.
   const userData = useSelector((state) => state.profile);
+  // Retrieve the 'name' object from the 'profile' array.
   const userName = userData.filter((item) => item.id === "name")[0];
+  //Destructuring route parameters
   const { operatorName } = route.params;
   const flatListRef = useRef(null);
 

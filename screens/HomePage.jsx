@@ -9,9 +9,14 @@ import ShopingCart from "../components/svg/ShopingCart";
 import LoyaltyCard from "../components/LoyaltyCard";
 export function HomePage() {
   const navigation = useNavigation();
-  //detect period
+
+  // Fetch data from the user's profile.
   const data = useSelector((state) => state.profile);
+
+  // Retrieve the 'name' object from the 'profile' array.
   const userObj = data.filter((item) => item.id === "name");
+
+  //get period of the day
   function getDayPeriod(currentHour) {
     // const currentHour = new Date().getHours();
 
@@ -27,13 +32,14 @@ export function HomePage() {
   }
 
   const [dayPeriod, setDayPeriod] = useState("");
+
   useEffect(() => {
     const currentHour = new Date().getHours();
     const period = getDayPeriod(currentHour);
     setDayPeriod(period);
   }, []);
 
-  //
+  //state for loyalty cart
   const [loyalty, setLoyalty] = useState({
     total: 8,
     userOwn: 4,

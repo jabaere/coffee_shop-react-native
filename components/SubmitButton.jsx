@@ -1,11 +1,14 @@
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import React from "react";
-import ArrowRight from "../assets/svg/ArrowRight.svg";
+
+import BackArrowSVG from "./svg/BackArrowSVG";
 export function SubmitButton({ submit }) {
   return (
     <View style={styles.button_container}>
       <TouchableOpacity onPress={submit}>
-        <ArrowRight style={{ width: 24, height: 28, color: "black" }} />
+        <View style={{ transform: [{ rotate: "180deg" }] }}>
+          <BackArrowSVG color="white" />
+        </View>
       </TouchableOpacity>
     </View>
   );
