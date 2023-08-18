@@ -1,4 +1,12 @@
 # coffee_shop-react-native
+  <details>
+     <summary>App demo video</summary>
+     <p>video link</p>
+  </details>
+    <details>
+     <summary>Download app</summary>
+     <a>https://drive.google.com/file/d/1e5yLk4EZDu_rqMui2x-KXWNxwi6A_Ewj/view?usp=drive_link</a>
+  </details>
    ## 1. Even though I don't use the back-end, this is not just a front-end. The app has some functionality, such as: 
       ### - Adding and removing products from the cart.
       ### - Choose product via parameters, such as:
