@@ -1,7 +1,11 @@
 # coffee_shop-react-native
   <details>
      <summary>App demo video</summary>
-     <p>video link</p>
+    <video controls width="400">
+  <source src="https://www.loom.com/share/3b50685e7d844b668d842e23b247968b?sid=468f8281-93c3-4607-903e-4338e0f7d321" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
   </details>
     <details>
      <summary>Download app</summary>
