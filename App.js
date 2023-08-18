@@ -54,12 +54,6 @@ export default function App() {
   }
   return (
     <Provider store={store}>
-      <StatusBar
-        animated={true}
-        backgroundColor="transparent"
-        barStyle="default"
-        showHideTransition="fade"
-      />
       <NavigationContainer>
         <Stack.Navigator initialRouteName="GreetingScreen">
           <Stack.Screen

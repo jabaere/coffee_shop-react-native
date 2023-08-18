@@ -320,7 +320,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     justifyContent: "center",
     alignItems: "center",
-    margin: 25,
+    marginTop: 10,
     alignSelf: "center",
   },
   img: {

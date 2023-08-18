@@ -4,27 +4,31 @@
     "slug": "coffee_house",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/coffeeIcon.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
+    // "splash": {
+    //   "image": "./assets/splash.png",
+    //   "resizeMode": "cover",
+    //   "backgroundColor": "#ffffff"
+    // },
     "assetBundlePatterns": ["**/*"],
+    "jsEngine": "hermes",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "sdkVersion"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-
-      "package": "com.anonymous.coffe_house"
+      "package": "com.anonymous.coffe_house",
+      "runtimeVersion": "1.0.0"
     },
     "androidNavigationBar": {
-      "visible": "sticky-immersive"
+      "visible": "leanback"
     },
     "androidStatusBar": {
       "backgroundColor": "#00000000",
@@ -32,6 +36,15 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c682d042-c90d-4fc5-a122-e0728dd1c4b4"
+      }
+    },
+    "updates": {
+      "enabled": false,
+      "url": "https://u.expo.dev/c682d042-c90d-4fc5-a122-e0728dd1c4b4"
     }
   }
 }

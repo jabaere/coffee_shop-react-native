@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Dimensions } from "react-native";
+import { Text, View, StyleSheet, Dimensions, SafeAreaView } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomePage } from "../HomePage";
 import { Orders } from "../Orders";
@@ -7,85 +7,82 @@ import { Rewards } from "../Rewards";
 import ShopIcon from "../../components/svg/ShopSVG";
 import GiftSVG from "../../components/svg/GiftSVG";
 import ListSVG from "../../components/svg/ListSVG";
-
+import Constants from "expo-constants";
 const Tab = createBottomTabNavigator();
-
+const androidNavigationBarHeight =
+  Constants.platform?.android?.navigationBarHeight || 0;
 const BottomTabNavigator = () => {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused }) => (
-          <View style={styles.tabNavigatorContainer}>
-            {getTabIcon(route.name, focused)}
-          </View>
-        ),
-        tabBarStyle: styles.tabBarContainer,
-      })}
-      initialRouteName="HomePage"
-    >
-      <Tab.Screen
-        name="HomePage"
-        component={HomePage}
-        options={{
+    <SafeAreaView style={{ flex: 1 }}>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
           tabBarIcon: ({ focused }) => (
-            <Text style={{ color: focused ? "red" : "gray" }}>
-              {getTabIcon("HomePage", focused)}
-            </Text>
+            <View style={styles.tabNavigatorContainer}>
+              {getTabIcon(route.name, focused)}
+            </View>
           ),
-          title: "",
-          headerStyle: {
-            height: 0, // Set the header height to 0
-          },
-          headerTitleStyle: {
-            display: "none", // Hide the header title
-          },
-          headerLeft: null,
-          headerShown: false,
-        }}
-      />
-      <Tab.Screen
-        name="Rewards"
-        component={Rewards}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Text style={{ color: focused ? "black" : "gray" }}>
-              {getTabIcon("Rewards", focused)}
-            </Text>
-          ),
-          title: "",
-          headerStyle: {
-            // height: 0, // Set the header height to 0
-          },
-          headerTitleStyle: {
-            display: "none", // Hide the header title
-          },
-          headerLeft: null,
-          headerShown: false,
-        }}
-      />
-      <Tab.Screen
-        name="Orders"
-        component={Orders}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Text style={{ color: focused ? "black" : "gray" }}>
-              {getTabIcon("Orders", focused)}
-            </Text>
-          ),
-          title: "",
-          headerStyle: {
-            // height: 0, // Set the header height to 0
-          },
-          //   headerTitleStyle: {
-          //     display: "none", // Hide the header title
-          //   },
-          //   tabBarLabel: "Orders",
-          //   headerTitle: "Orders",
-          headerLeft: null,
-          headerShown: false,
-        }}
-      />
-    </Tab.Navigator>
+          tabBarStyle: styles.tabBarContainer,
+        })}
+        initialRouteName="HomePage"
+      >
+        <Tab.Screen
+          name="HomePage"
+          component={HomePage}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <View>{getTabIcon("HomePage", focused)}</View>
+            ),
+            title: "",
+            headerStyle: {
+              height: 0, // Set the header height to 0
+            },
+            headerTitleStyle: {
+              display: "none", // Hide the header title
+            },
+            headerLeft: null,
+            headerShown: false,
+          }}
+        />
+        <Tab.Screen
+          name="Rewards"
+          component={Rewards}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <View>{getTabIcon("Rewards", focused)}</View>
+            ),
+            title: "",
+            headerStyle: {
+              // height: 0, // Set the header height to 0
+            },
+            headerTitleStyle: {
+              display: "none", // Hide the header title
+            },
+            headerLeft: null,
+            headerShown: false,
+          }}
+        />
+        <Tab.Screen
+          name="Orders"
+          component={Orders}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <View>{getTabIcon("Orders", focused)}</View>
+            ),
+            title: "",
+            headerStyle: {
+              // height: 0, // Set the header height to 0
+            },
+            //   headerTitleStyle: {
+            //     display: "none", // Hide the header title
+            //   },
+            //   tabBarLabel: "Orders",
+            //   headerTitle: "Orders",
+            headerLeft: null,
+            headerShown: false,
+          }}
+        />
+      </Tab.Navigator>
+    </SafeAreaView>
   );
 };
 
@@ -105,24 +102,23 @@ const getTabIcon = (routeName, focused) => {
 
 const styles = StyleSheet.create({
   tabNavigatorContainer: {
-    height: 64,
-    //padding: 100,
-    //width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
   },
   tabBarContainer: {
     borderRadius: 10,
-    overflow: "hidden",
     position: "absolute",
-    bottom: 20,
+    bottom: androidNavigationBarHeight + 20,
     left: 20,
     right: 20,
-    marginLeft: "auto",
-    marginRight: "auto",
-
     backgroundColor: "#fff",
     elevation: 4,
 
-    padding: 12,
+    overflow: "hidden",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
   },
 });
 

@@ -159,7 +159,7 @@ export default function ConfirmationModal({ name, adress, totalPrice }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 70,
+    marginVertical: 60,
     backgroundColor: "#fff",
     position: "absolute",
     elevation: 100,
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "space-between",
     flexDirection: "row",
-    marginVertical: 23,
+    marginVertical: 13,
     gap: 27,
 
     alignItems: "center",

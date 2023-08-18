@@ -71,7 +71,7 @@ export function Cart({ navigation }) {
           </View>
         )}
         keyExtractor={(item) => item.id}
-        style={{ gap: 20 }}
+        style={{ gap: 20, maxHeight: "75%" }}
       />
       <View style={styles.bottom_container}>
         <View>

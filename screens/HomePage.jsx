@@ -7,6 +7,7 @@ import { coffeeInfo } from "../utils/globalFuntions";
 import { AntDesign } from "@expo/vector-icons";
 import ShopingCart from "../components/svg/ShopingCart";
 import LoyaltyCard from "../components/LoyaltyCard";
+import { StatusBar } from "expo-status-bar";
 export function HomePage() {
   const navigation = useNavigation();
 
@@ -47,6 +48,7 @@ export function HomePage() {
 
   return (
     <View style={styles.container}>
+      <StatusBar style="light" translucent backgroundColor="transparent" />
       <View style={styles.user}>
         <View style={styles.greeting}>
           <Text style={styles.user__greeting}>Good {dayPeriod}</Text>
@@ -105,6 +107,7 @@ export function HomePage() {
                     price: coffee.price,
                   })
                 }
+                style={styles.item}
               >
                 <CoffeeCard name={coffee.name} img={coffee.img} />
               </TouchableOpacity>
@@ -121,7 +124,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     width: "100%",
-    gap: 20,
   },
   user: {
     height: 100,
@@ -159,11 +161,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#324A59",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    width: "100%",
+
     flex: 1,
+    marginTop: 20,
   },
   subContainer: {
-    width: "80%",
+    width: "100%",
     padding: 20,
   },
   title: {
@@ -191,9 +194,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cardContainer: {
-    width: "80%",
+    width: "100%",
+
     flexWrap: "wrap",
+
     gap: 12,
     paddingTop: 10,
+    alignSelf: "center",
+  },
+  item: {
+    width: "48%",
   },
 });

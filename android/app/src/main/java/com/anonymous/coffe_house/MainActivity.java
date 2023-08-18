@@ -10,14 +10,41 @@ import com.facebook.react.defaults.DefaultReactActivityDelegate;
 
 import expo.modules.ReactActivityDelegateWrapper;
 
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // Set the theme to AppTheme BEFORE onCreate to support 
     // coloring the background, status bar, and navigation bar.
     // This is required for expo-splash-screen.
-    setTheme(R.style.AppTheme);
-    super.onCreate(null);
+     setTheme(R.style.AppTheme);
+     //
+    super.onCreate(savedInstanceState);
+     
+
+        // Set immersive mode
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                // | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION 
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN; //???
+                
+        
+                // View.SYSTEM_UI_FLAG_IMMERSIVE
+                // | View.SYSTEM_UI_FLAG_FULLSCREEN
+                // | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                // | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+                // | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                // | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+        //
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//     getWindow().setStatusBarColor(Color.TRANSPARENT);
+// }
+   
   }
 
   /**
@@ -65,4 +92,7 @@ public class MainActivity extends ReactActivity {
     // because it's doing more than {@link Activity#moveTaskToBack} in fact.
     super.invokeDefaultOnBackPressed();
   }
+
+
+  
 }

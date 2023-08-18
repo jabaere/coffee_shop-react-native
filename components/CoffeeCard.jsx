@@ -13,7 +13,7 @@ export default function ({ img, name }) {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 10,
-    width: 154,
+    width: "100%",
     height: 164,
     backgroundColor: "#F7F8FB",
     justifyContent: "center",
